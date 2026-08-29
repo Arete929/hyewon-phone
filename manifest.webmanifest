@@ -1,0 +1,16 @@
+{
+  "name": "혜원폰",
+  "short_name": "혜원폰",
+  "description": "혜원여자중학교 — 시간표·급식·학사일정·주간업무·바로가기를 한 곳에서",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F7FF",
+  "theme_color": "#27187E",
+  "lang": "ko",
+  "icons": [
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#27187E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="혜원폰">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-512.png">
+<title>혜원폰</title>
+<style>
+/* ── 색 ────────────────────────────────────────────────────
+   진호알리미·혜원이지의 «고스트» 를 그대로 가져왔다. 폰에서도 같은 집이어야 한다.
+   어두운 화면을 쓰는 분을 위해 밤 색도 같이 둔다. */
+:root{
+  --bg:#F7F7FF; --fg:#27187E; --accent:#27187E; --on:#F7F7FF;
+  --card:#E4E0F5; --card2:#D5D0EC; --line:#B4ACDD; --dim:#5F5798; --fg2:#3A2E8E;
+  --ok:#0E7C58; --warn:#B3541E;
+  --pad:16px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#15161f; --fg:#E9E8F7; --accent:#A79BFF; --on:#15161f;
+    --card:#242737; --card2:#2F3348; --line:#414665; --dim:#A5A3C6; --fg2:#CFCCEC;
+    --ok:#4FD1A0; --warn:#FFB27A;
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--fg);
+  font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,-apple-system,sans-serif;
+  font-size:15px; line-height:1.5;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  -webkit-font-smoothing:antialiased;
+}
+button,input{font:inherit;color:inherit}
+
+/* ── 머리 ─────────────────────────────────────────────── */
+.top{
+  position:sticky; top:0; z-index:9; background:var(--bg);
+  display:flex; align-items:center; gap:10px;
+  padding:14px var(--pad) 10px; border-bottom:1px solid var(--line);
+}
+.top h1{margin:0;font-size:19px;font-weight:800;letter-spacing:-.5px;flex:1;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.top .back{
+  background:none;border:0;padding:6px 8px 6px 0;font-size:20px;line-height:1;cursor:pointer;color:var(--accent);
+}
+.top .act{
+  background:var(--card);border:1px solid var(--line);border-radius:999px;
+  padding:5px 12px;font-size:12px;font-weight:700;color:var(--fg2);cursor:pointer;
+}
+.wrap{padding:var(--pad) var(--pad) 80px}
+
+/* ── 오늘 띠 ──────────────────────────────────────────── */
+.dayline{
+  display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.dayline b{font-size:22px;font-weight:800;letter-spacing:-.6px}
+.dayline span{font-size:13px;color:var(--dim)}
+.dayline em{
+  font-style:normal;font-size:12px;font-weight:800;color:var(--on);background:var(--accent);
+  border-radius:999px;padding:2px 9px;
+}
+
+/* ── 타일 격자 (고르신 시안) ───────────────────────────── */
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.tile{
+  display:flex;flex-direction:column;gap:7px;text-align:left;
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:14px 14px 15px;cursor:pointer;min-height:112px;
+  transition:transform .08s,border-color .12s;
+}
+.tile:active{transform:scale(.975)}
+.tile.wide{grid-column:1/-1;min-height:0}
+.tile .ic{font-size:22px;line-height:1}
+.tile .tt{font-size:14px;font-weight:800;letter-spacing:-.3px}
+.tile .td{font-size:12.5px;color:var(--dim);line-height:1.45;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tile .td b{color:var(--fg2);font-weight:800}
+.tile.none{opacity:.55}
+
+/* ── 목록·카드 ───────────────────────────────────────── */
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:13px 14px;margin-bottom:11px;
+}
+.card h2{margin:0 0 8px;font-size:13px;font-weight:800;color:var(--dim);letter-spacing:.2px}
+.row{display:flex;gap:9px;align-items:baseline;padding:6px 0}
+.row+.row{border-top:1px solid var(--line)}
+.row i{font-style:normal;font-size:12px;font-weight:800;color:var(--accent);flex:0 0 auto;min-width:38px}
+.row b{font-weight:800;flex:0 0 auto}
+.row span{color:var(--fg2);min-width:0;font-size:14px}
+.muted{color:var(--dim);font-size:13.5px}
+.empty{text-align:center;color:var(--dim);padding:34px 10px;font-size:14px;line-height:1.7}
+
+/* ── 시간표 표 ───────────────────────────────────────── */
+.tt-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.tt{border-collapse:collapse;width:100%;min-width:330px;font-size:12px}
+table.tt th,table.tt td{
+  border:1px solid var(--line);padding:5px 3px;text-align:center;vertical-align:middle;
+}
+table.tt th{background:var(--card2);font-weight:800;font-size:11.5px;color:var(--fg2)}
+table.tt td{height:44px}
+table.tt td.on{background:var(--card)}
+table.tt td b{display:block;font-size:12.5px;font-weight:800}
+table.tt td u{display:block;text-decoration:none;font-size:10.5px;color:var(--dim);margin-top:1px}
+table.tt col.today,table.tt th.today{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+table.tt td.today{background:color-mix(in srgb,var(--accent) 9%,var(--card))}
+
+/* ── 급식 ────────────────────────────────────────────── */
+.meal .day{font-size:13px;font-weight:800;color:var(--dim);margin-bottom:5px}
+.meal .day em{font-style:normal;font-weight:700;margin-left:7px;opacity:.75}
+.meal .dishes{display:flex;flex-wrap:wrap;gap:5px 12px}
+.meal .dishes span{font-size:14.5px;font-weight:600}
+
+/* ── 주간업무 ────────────────────────────────────────── */
+.dept{margin-bottom:12px}
+.dept>h3{
+  margin:0 0 6px;font-size:14px;font-weight:800;color:var(--fg);
+  background:color-mix(in srgb,var(--accent) 11%,transparent);
+  border-radius:8px;padding:5px 10px;
+}
+.dept p{margin:3px 0;font-size:13.5px;color:var(--fg2);white-space:pre-wrap;word-break:break-word}
+.dept p.c{text-align:center}
+.dept p.r{text-align:right}
+.dept a{color:var(--accent);font-weight:700}
+.dept table{border-collapse:collapse;width:100%;font-size:12.5px;margin:6px 0}
+.dept table td,.dept table th{border:1px solid var(--line);padding:4px 6px;vertical-align:top}
+
+/* ── 바로가기 타일 ───────────────────────────────────── */
+.links{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.lnk{
+  display:flex;flex-direction:column;gap:4px;text-align:left;
+  background:var(--bg);border:1px solid var(--line);border-radius:13px;
+  padding:12px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.10);
+}
+.lnk:active{transform:scale(.975)}
+.lnk b{font-size:13.5px;font-weight:800;line-height:1.35}
+.lnk i{font-style:normal;font-size:11px;color:var(--dim)}
+
+/* ── 고르개(칩) — 드롭다운은 쓰지 않는다 ────────────────── */
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  background:var(--card);border:1px solid var(--line);border-radius:999px;
+  padding:6px 13px;font-size:13px;font-weight:700;color:var(--fg2);cursor:pointer;
+}
+.chip.on{background:var(--accent);border-color:var(--accent);color:var(--on)}
+.fld{
+  width:100%;background:var(--bg);border:1px solid var(--line);border-radius:11px;
+  padding:11px 13px;font-size:15px;margin-bottom:9px;
+}
+
+/* ── 첫 화면(암호) ───────────────────────────────────── */
+.gate{max-width:340px;margin:14vh auto 0;padding:0 var(--pad);text-align:center}
+.gate img{width:78px;height:78px;border-radius:20px;margin-bottom:14px}
+.gate h1{font-size:23px;margin:0 0 6px;font-weight:800;letter-spacing:-.6px}
+.gate p{color:var(--dim);font-size:13.5px;margin:0 0 18px;line-height:1.6}
+.btn{
+  width:100%;background:var(--accent);color:var(--on);border:0;border-radius:12px;
+  padding:13px;font-size:15px;font-weight:800;cursor:pointer;
+}
+.btn.ghost{background:var(--card);color:var(--fg2);border:1px solid var(--line)}
+.err{color:var(--warn);font-size:13px;margin-top:10px;min-height:18px;font-weight:700}
+
+/* ── 새 판 띠 ────────────────────────────────────────── */
+.newver{
+  position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));
+  background:var(--accent);color:var(--on);border-radius:13px;
+  padding:12px 14px;display:none;align-items:center;gap:10px;z-index:50;
+  box-shadow:0 6px 20px rgba(0,0,0,.28);font-size:13.5px;font-weight:700;
+}
+.newver button{
+  margin-left:auto;background:var(--on);color:var(--accent);border:0;border-radius:9px;
+  padding:7px 13px;font-weight:800;font-size:13px;cursor:pointer;
+}
+.foot{text-align:center;color:var(--dim);font-size:11.5px;padding:22px 0 6px;line-height:1.7}
+.spin{text-align:center;color:var(--dim);padding:44px 0;font-size:14px}
+
+/* 태블릿(갤럭시탭 S7 FE 등) — 넓으면 타일을 더 벌린다 */
+@media (min-width:640px){
+  :root{--pad:24px}
+  .tiles{grid-template-columns:repeat(3,1fr)}
+  .links{grid-template-columns:repeat(3,1fr)}
+  .wrap{max-width:900px;margin:0 auto}
+  .top{max-width:900px;margin:0 auto}
+}
+@media (min-width:900px){
+  .tiles{grid-template-columns:repeat(4,1fr)}
+  .links{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+<div id="app"><div class="spin">불러오는 중…</div></div>
+
+<div class="newver" id="newver">
+  <span>새 판이 나왔습니다</span>
+  <button type="button" id="nvBtn">지금 바꾸기</button>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   혜원폰 | @version 1.0.0
+   수정요약: v1.0.0 첫 판 — 타일 홈 + 시간표·급식·학사일정·주간업무·바로가기
+
+   ★ 폰은 아무것도 긁지 않는다. «다리»(GAS)가 다 긁어서 정리해 준 것만 받는다.
+     폰 브라우저는 남의 사이트를 직접 못 부르기 때문이다(같은 출처 규칙).
+   ★ 드롭다운(select)은 쓰지 않는다 — 칩·단추로 고른다.
+   ══════════════════════════════════════════════════════════ */
+
+var VERSION = '1.0.0';
+var BRIDGE = 'https://script.google.com/macros/s/'
+  + 'AKfycbzsemwlt0CehxbnVofhLPRrc2jRS1oSZyOpFVUTjBnq1Kohee9RziZFYYS1qLyadBcM/exec';
+
+var DOWN = ['일','월','화','수','목','금','토'];
+var $ = function (id) { return document.getElementById(id); };
+var APP = $('app');
+
+/* ── 이 폰에 담아 두는 것 ──────────────────────────────── */
+var LS = {
+  get: function (k, d) {
+    try { var v = localStorage.getItem('phone.' + k); return v === null ? d : v; }
+    catch (e) { return d; }
+  },
+  set: function (k, v) { try { localStorage.setItem('phone.' + k, v); } catch (e) {} },
+  del: function (k) { try { localStorage.removeItem('phone.' + k); } catch (e) {} }
+};
+
+var KEY = LS.get('key', '');
+var ME = LS.get('me', '');          // 내 이름 (컴시간 교사 이름)
+var VIEW = 'home';
+var D = null;                        // 다리에서 받은 것
+var ERR = '';
+var LOADING = false;
+
+/* ── 잔손 ────────────────────────────────────────────── */
+function esc(s) {
+  return String(s === undefined || s === null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+function todayStr() {
+  var d = new Date();
+  var p = function (n) { return (n < 10 ? '0' : '') + n; };
+  return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+}
+function todayDow() { return DOWN[new Date().getDay()]; }
+function isWeekday() { var g = new Date().getDay(); return g >= 1 && g <= 5; }
+
+/* ── 다리 부르기 ─────────────────────────────────────── */
+function load(fresh) {
+  if (!KEY) { VIEW = 'gate'; draw(); return; }
+  LOADING = true; ERR = ''; draw();
+  var u = BRIDGE + '?key=' + encodeURIComponent(KEY) + '&what=all' + (fresh ? '&fresh=1' : '');
+  fetch(u, { redirect: 'follow' })
+    .then(function (r) { return r.json(); })
+    .then(function (j) {
+      LOADING = false;
+      if (!j.ok) {
+        if (j.need === 'key') { KEY = ''; LS.del('key'); VIEW = 'gate'; ERR = j.error || ''; }
+        else ERR = j.error || '자료를 받지 못했습니다';
+        draw(); return;
+      }
+      D = j;
+      LS.set('cache', JSON.stringify(j));
+      LS.set('cacheAt', new Date().toISOString());
+      draw();
+    })
+    .catch(function (e) {
+      LOADING = false;
+      /* ★ 인터넷이 없거나 다리가 죽었을 때 — 지난번에 받아 둔 것이라도 보여 준다.
+         빈 화면보다 낫다. 언제 것인지는 아래에 적어 준다. */
+      var c = LS.get('cache', '');
+      if (c && !D) { try { D = JSON.parse(c); } catch (e2) {} }
+      ERR = '지금은 못 받았습니다 — ' + ((e && e.message) || e);
+      draw();
+    });
+}
+
+/* ══ 화면 ═══════════════════════════════════════════════ */
+
+/* ── 첫 화면: 암호 ───────────────────────────────────── */
+function viewGate() {
+  return '<div class="gate">'
+    + '<img src="icon-512.png" alt="">'
+    + '<h1>혜원폰</h1>'
+    + '<p>혜원여자중학교 선생님용입니다.<br>학교 공용 암호를 한 번만 넣으면 기억합니다.</p>'
+    + '<input class="fld" id="gKey" type="password" inputmode="text"'
+    + ' autocomplete="current-password" placeholder="암호">'
+    + '<button class="btn" id="gGo">들어가기</button>'
+    + '<div class="err">' + esc(ERR) + '</div>'
+    + '</div>';
+}
+
+/* ── 오늘 내 수업 ────────────────────────────────────── */
+function myDays() {
+  if (!D || !D.tt || !ME) return null;
+  var list = D.tt.byTeacher || [];
+  for (var i = 0; i < list.length; i++) if (list[i].name === ME) return list[i];
+  return null;
+}
+function myToday() {
+  var t = myDays();
+  if (!t) return [];
+  var dow = todayDow();
+  for (var i = 0; i < t.days.length; i++) {
+    if (t.days[i].dow !== dow) continue;
+    return (t.days[i].periods || []).map(function (p) { return p; })
+      .filter(function (p) { return p; });
+  }
+  return [];
+}
+
+/* ── 홈: 타일 ────────────────────────────────────────── */
+function viewHome() {
+  var d = new Date();
+  var h = '<div class="dayline">'
+    + '<b>' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일</b>'
+    + '<span>' + todayDow() + '요일</span>';
+  var todayEv = (D && D.ac && D.ac.next7 || []).filter(function (x) { return x.date === todayStr(); });
+  if (todayEv.length) h += '<em>' + esc(todayEv[0].event) + '</em>';
+  h += '</div>';
+
+  h += '<div class="tiles">';
+
+  /* ① 오늘 수업 */
+  var mine = myToday();
+  var sub;
+  if (!ME) sub = '내 이름을 먼저 고르면<br>오늘 수업이 보입니다';
+  else if (!isWeekday()) sub = '오늘은 수업이 없습니다';
+  else if (!mine.length) sub = '오늘 수업이 없습니다';
+  else sub = mine.slice(0, 3).map(function (p) {
+    return '<b>' + p.p + '교시</b> ' + esc(p.grade + '-' + p.cls) + ' ' + esc(p.subject);
+  }).join('<br>') + (mine.length > 3 ? '<br>… 모두 ' + mine.length + '교시' : '');
+  h += tile('tt', '📘', '오늘 수업', sub, !ME || !mine.length);
+
+  /* ② 오늘 급식 */
+  var m = mealOf(todayStr());
+  h += tile('meal', '🍚', '오늘 급식',
+    m ? esc(m.dishes.slice(0, 4).join(' · ')) + (m.dishes.length > 4 ? ' …' : '')
+      : '오늘 급식이 없습니다', !m);
+
+  /* ③ 앞으로 7일 */
+  var nx = (D && D.ac && D.ac.next7) || [];
+  h += tile('ac', '📅', '앞으로 7일',
+    nx.length ? nx.slice(0, 3).map(function (x) {
+      return '<b>' + esc(x.date.slice(5).replace('-', '/')) + '</b> ' + esc(x.event);
+    }).join('<br>') : '앞으로 이레는 조용합니다', !nx.length);
+
+  /* ④ 주간업무 */
+  var wk = thisWeek();
+  h += tile('work', '📋', '주간업무',
+    wk ? esc(wk.range) + '<br>부서 ' + wk.depts.length + '곳'
+      : '아직 못 받았습니다', !wk);
+
+  /* ⑤ 바로가기 — 넓게 */
+  h += tile('link', '🔗', '바로가기', '학교에서 함께 쓰는 앱', false, 'wide');
+  h += '</div>';
+
+  var at = D ? esc(D.at) : LS.get('cacheAt', '');
+  h += '<div class="foot">v' + VERSION + ' · 받은 때 ' + esc(at || '—')
+    + (ERR ? '<br>' + esc(ERR) : '') + '</div>';
+  return h;
+}
+function tile(go, ic, t, d, none, cls) {
+  return '<button type="button" class="tile' + (none ? ' none' : '')
+    + (cls ? ' ' + cls : '') + '" data-go="' + go + '">'
+    + '<span class="ic">' + ic + '</span>'
+    + '<span class="tt">' + esc(t) + '</span>'
+    + '<span class="td">' + d + '</span></button>';
+}
+
+/* ── 시간표 ─────────────────────────────────────────── */
+function viewTT() {
+  if (!D || !D.tt) return notyet(D && D.ttError);
+  if (!ME) return viewPickMe();
+  var t = myDays();
+  if (!t) {
+    return '<div class="empty">«' + esc(ME) + '» 을 시간표에서 못 찾았습니다.<br>'
+      + '이름을 다시 골라 주세요.</div>'
+      + '<button class="btn ghost" data-go="me">이름 다시 고르기</button>';
+  }
+  var maxP = 1;
+  t.days.forEach(function (dy) { maxP = Math.max(maxP, (dy.periods || []).length); });
+  var dow = todayDow();
+
+  var h = '<div class="card"><h2>' + esc(ME) + ' 선생님 · '
+    + esc((D.tt.school || '') + ' ' + (D.tt.year || '')) + '</h2>'
+    + '<div class="tt-wrap"><table class="tt"><thead><tr><th>교시</th>';
+  t.days.forEach(function (dy) {
+    h += '<th' + (dy.dow === dow ? ' class="today"' : '') + '>' + esc(dy.dow) + '</th>';
+  });
+  h += '</tr></thead><tbody>';
+  for (var p = 0; p < maxP; p++) {
+    h += '<tr><th>' + (p + 1) + '<br><u style="font-size:9px;color:var(--dim);text-decoration:none">'
+      + esc((D.tt.times && D.tt.times[p + 1]) || '') + '</u></th>';
+    t.days.forEach(function (dy) {
+      var c = (dy.periods || [])[p];
+      var cls = (dy.dow === dow ? ' today' : (c ? ' on' : ''));
+      h += '<td class="' + cls.trim() + '">'
+        + (c ? '<b>' + esc(c.grade + '-' + c.cls) + '</b><u>' + esc(c.subject) + '</u>' : '')
+        + '</td>';
+    });
+    h += '</tr>';
+  }
+  h += '</tbody></table></div></div>';
+  h += '<button class="btn ghost" data-go="me">이름 다시 고르기</button>';
+  return h;
+}
+
+/* 내 이름 고르기 — 교사가 쉰 명쯤이라 «검색 + 칩» 으로 한다(드롭다운 금지) */
+var meQ = '';
+function viewPickMe() {
+  if (!D || !D.tt) return notyet(D && D.ttError);
+  var all = (D.tt.byTeacher || []).map(function (t) { return t.name; })
+    .filter(function (n) { return n; });
+  var q = meQ.trim();
+  var hit = q ? all.filter(function (n) { return n.indexOf(q) >= 0; }) : all;
+  return '<div class="card">'
+    + '<h2>내 이름 고르기</h2>'
+    + '<p class="muted" style="margin:0 0 10px">컴시간에 올라 있는 이름입니다.'
+    + ' 가운데 글자는 컴시간이 가려서 줍니다(예: 김*호).</p>'
+    + '<input class="fld" id="meQ" placeholder="이름 일부를 넣어 보세요" value="' + esc(meQ) + '">'
+    + '<div class="chips">'
+    + hit.slice(0, 200).map(function (n) {
+      return '<button type="button" class="chip' + (n === ME ? ' on' : '')
+        + '" data-me="' + esc(n) + '">' + esc(n) + '</button>';
+    }).join('')
+    + '</div>'
+    + (hit.length ? '' : '<div class="empty">찾는 이름이 없습니다</div>')
+    + '</div>';
+}
+
+/* ── 급식 ────────────────────────────────────────────── */
+function mealOf(date) {
+  if (!D || !D.meal) return null;
+  var list = D.meal.meals || [];
+  for (var i = 0; i < list.length; i++) if (list[i].date === date) return list[i];
+  return null;
+}
+function viewMeal() {
+  if (!D || !D.meal) return notyet(D && D.mealError);
+  var list = D.meal.meals || [];
+  if (!list.length) {
+    return '<div class="empty">이번 주는 급식이 없습니다.<br>(방학이거나 아직 안 올라왔습니다)</div>';
+  }
+  var today = todayStr();
+  return '<div class="card"><h2>' + esc(D.meal.school) + ' · '
+    + esc(D.meal.from) + ' ~ ' + esc(D.meal.to) + '</h2></div>'
+    + list.map(function (m) {
+      var d = new Date(m.date + 'T00:00:00');
+      return '<div class="card meal"' + (m.date === today
+        ? ' style="border-color:var(--accent);border-width:2px"' : '') + '>'
+        + '<div class="day">' + (d.getMonth() + 1) + '/' + d.getDate()
+        + ' (' + DOWN[d.getDay()] + ')'
+        + (m.date === today ? ' · 오늘' : '')
+        + (m.kcal ? '<em>' + esc(m.kcal) + '</em>' : '') + '</div>'
+        + '<div class="dishes">' + m.dishes.map(function (x) {
+          return '<span>' + esc(x) + '</span>';
+        }).join('') + '</div></div>';
+    }).join('');
+}
+
+/* ── 학사일정 ────────────────────────────────────────── */
+function viewAc() {
+  if (!D || !D.ac) return notyet(D && D.acError);
+  var nx = D.ac.next7 || [];
+  var h = '';
+  h += '<div class="card"><h2>앞으로 7일</h2>';
+  h += nx.length ? nx.map(function (x) {
+    return '<div class="row"><i>' + esc(x.date.slice(5).replace('-', '/'))
+      + '<small style="opacity:.7"> ' + esc(x.dow) + '</small></i>'
+      + '<span>' + esc(x.event) + '</span></div>';
+  }).join('') : '<div class="muted">이레 안에는 별다른 일정이 없습니다.</div>';
+  h += '</div>';
+
+  /* 이번 달 전체 */
+  var now = new Date();
+  var mm = String(now.getMonth() + 1);
+  (D.ac.months || []).forEach(function (M) {
+    if (String(M.month) !== mm) return;
+    if (M.year && M.year !== now.getFullYear()) return;
+    var rows = (M.days || []).filter(function (r) { return r.event; });
+    if (!rows.length) return;
+    h += '<div class="card"><h2>' + esc(M.month) + '월</h2>'
+      + rows.map(function (r) {
+        var on = r.day === now.getDate();
+        return '<div class="row"' + (on ? ' style="font-weight:800"' : '') + '>'
+          + '<i>' + r.day + '<small style="opacity:.7"> ' + esc(r.dow) + '</small></i>'
+          + '<span>' + esc(r.event) + '</span></div>';
+      }).join('') + '</div>';
+  });
+  return h;
+}
+
+/* ── 주간업무 ────────────────────────────────────────── */
+function thisWeek() {
+  if (!D || !D.work) return null;
+  var w = D.work.input;
+  if (w && w.length) return w[w.length - 1];
+  var m = D.work.merged;
+  return (m && m.length) ? m[m.length - 1] : null;
+}
+function viewWork() {
+  if (!D || !D.work) return notyet(D && D.workError);
+  var wk = thisWeek();
+  if (!wk) {
+    return '<div class="empty">주간업무를 읽지 못했습니다.'
+      + (D.work.error ? '<br>' + esc(D.work.error) : '') + '</div>';
+  }
+  var h = '<div class="card"><h2>' + esc(wk.range) + '</h2>';
+  if (wk.days && wk.days.length) {
+    h += wk.days.filter(function (d) { return d.items && d.items.length; })
+      .map(function (d) {
+        return '<div class="row"><i>' + d.day + '<small style="opacity:.7"> '
+          + esc(d.dow) + '</small></i><span>' + esc(d.items.join(' · ')) + '</span></div>';
+      }).join('');
+  }
+  h += '</div>';
+  h += (wk.depts || []).map(function (dp) {
+    return '<div class="card dept"><h3>' + esc(dp.name) + '</h3>'
+      + (dp.blocks || []).map(blockHtml).join('') + '</div>';
+  }).join('');
+  return h;
+}
+function blockHtml(b) {
+  if (!b) return '';
+  if (b.k === 'p') {
+    var t = esc(b.t);
+    (b.links || []).forEach(function (L) {
+      t = t.split(esc(L.t)).join('<a href="' + esc(L.url)
+        + '" target="_blank" rel="noopener">' + esc(L.t) + '</a>');
+    });
+    return '<p class="' + (b.al === 'center' ? 'c' : b.al === 'right' ? 'r' : '') + '">' + t + '</p>';
+  }
+  return '<table>' + (b.rows || []).map(function (r) {
+    return '<tr>' + r.map(function (c) {
+      return '<td' + (c.cs > 1 ? ' colspan="' + c.cs + '"' : '')
+        + (c.rs > 1 ? ' rowspan="' + c.rs + '"' : '') + '>'
+        + (c.blocks || []).map(blockHtml).join('') + '</td>';
+    }).join('') + '</tr>';
+  }).join('') + '</table>';
+}
+
+/* ── 바로가기 ────────────────────────────────────────── */
+var FEED = null, feedTried = false;
+function viewLink() {
+  if (!FEED) {
+    if (!feedTried) { feedTried = true; loadFeed(); }
+    return '<div class="spin">바로가기를 받는 중…</div>';
+  }
+  var apps = (FEED.apps || []).filter(function (a) { return a.u; });
+  if (!apps.length) {
+    return '<div class="empty">함께 쓰는 앱이 아직 없습니다.<br>'
+      + '진호알리미 런처보드에서 «함께» 로 켜면 여기 보입니다.</div>';
+  }
+  var cats = [];
+  apps.forEach(function (a) {
+    var c = a.tab || '기타';
+    if (cats.indexOf(c) < 0) cats.push(c);
+  });
+  return cats.map(function (c) {
+    var mine = apps.filter(function (a) { return (a.tab || '기타') === c; });
+    return '<div class="card"><h2>' + esc(c) + ' · ' + mine.length + '</h2>'
+      + '<div class="links">' + mine.map(function (a) {
+        return '<button type="button" class="lnk" data-url="' + esc(a.u) + '">'
+          + '<b>' + esc(a.t) + '</b>'
+          + '<i>' + esc(a.d || (a.version || '')) + '</i></button>';
+      }).join('') + '</div></div>';
+  }).join('');
+}
+function loadFeed() {
+  fetch(FEEDURL() + '?view=json', { redirect: 'follow' })
+    .then(function (r) { return r.json(); })
+    .then(function (j) { FEED = j; draw(); })
+    .catch(function () { FEED = { apps: [] }; draw(); });
+}
+function FEEDURL() {
+  return 'https://script.google.com/macros/s/'
+    + 'AKfycbwot9uum8L5CUb6ouJdI03nwg6jS8WPJ0zu91y8EthdYWf0mVSMLws4zV2I6cEWry_0/exec';
+}
+
+/* ── 설정 ────────────────────────────────────────────── */
+function viewSet() {
+  return '<div class="card"><h2>내 이름</h2>'
+    + '<p class="muted" style="margin:0 0 10px">' + (ME ? esc(ME) : '아직 안 골랐습니다') + '</p>'
+    + '<button class="btn ghost" data-go="me">이름 고르기</button></div>'
+    + '<div class="card"><h2>자료</h2>'
+    + '<p class="muted" style="margin:0 0 10px">받은 때 · ' + esc((D && D.at) || '—') + '</p>'
+    + '<button class="btn ghost" id="reload">지금 새로 받기</button></div>'
+    + '<div class="card"><h2>암호</h2>'
+    + '<button class="btn ghost" id="forget">이 폰에서 암호 지우기</button></div>'
+    + '<div class="foot">혜원폰 v' + VERSION + '</div>';
+}
+
+function notyet(err) {
+  if (LOADING) return '<div class="spin">불러오는 중…</div>';
+  return '<div class="empty">아직 못 받았습니다.'
+    + (err ? '<br><span style="color:var(--warn)">' + esc(err) + '</span>' : '')
+    + '<br><br><button class="btn ghost" id="reload">다시 받기</button></div>';
+}
+
+/* ══ 그리기 ═════════════════════════════════════════════ */
+var TITLES = {
+  home: '혜원폰', tt: '시간표', meal: '급식', ac: '학사일정',
+  work: '주간업무', link: '바로가기', set: '설정', me: '내 이름'
+};
+function draw() {
+  if (VIEW === 'gate') { APP.innerHTML = viewGate(); wire(); return; }
+  var body;
+  if (LOADING && !D) body = '<div class="spin">불러오는 중…</div>';
+  else if (VIEW === 'home') body = viewHome();
+  else if (VIEW === 'tt') body = viewTT();
+  else if (VIEW === 'meal') body = viewMeal();
+  else if (VIEW === 'ac') body = viewAc();
+  else if (VIEW === 'work') body = viewWork();
+  else if (VIEW === 'link') body = viewLink();
+  else if (VIEW === 'me') body = viewPickMe();
+  else if (VIEW === 'set') body = viewSet();
+  else body = viewHome();
+
+  APP.innerHTML = '<div class="top">'
+    + (VIEW === 'home' ? '' : '<button type="button" class="back" data-go="home">‹</button>')
+    + '<h1>' + esc(TITLES[VIEW] || '혜원폰') + '</h1>'
+    + (VIEW === 'home'
+      ? '<button type="button" class="act" data-go="set">설정</button>'
+      : '')
+    + '</div><div class="wrap">' + body + '</div>';
+  wire();
+}
+
+function wire() {
+  APP.querySelectorAll('[data-go]').forEach(function (b) {
+    b.addEventListener('click', function () { VIEW = b.dataset.go; meQ = ''; draw(); window.scrollTo(0, 0); });
+  });
+  APP.querySelectorAll('[data-url]').forEach(function (b) {
+    b.addEventListener('click', function () { window.open(b.dataset.url, '_blank', 'noopener'); });
+  });
+  APP.querySelectorAll('[data-me]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      ME = b.dataset.me; LS.set('me', ME); VIEW = 'tt'; draw();
+    });
+  });
+  var q = $('meQ');
+  if (q) {
+    /* ★ 한글을 넣는 도중에 다시 그리면 글자가 깨진다 — 조합이 끝난 뒤에만 그린다 */
+    var composing = false;
+    q.addEventListener('compositionstart', function () { composing = true; });
+    q.addEventListener('compositionend', function () { composing = false; meQ = q.value; redrawKeep(q); });
+    q.addEventListener('input', function () { if (!composing) { meQ = q.value; redrawKeep(q); } });
+  }
+  var g = $('gGo');
+  if (g) {
+    var go = function () {
+      var v = ($('gKey').value || '').trim();
+      if (!v) return;
+      KEY = v; LS.set('key', v); ERR = ''; VIEW = 'home'; load();
+    };
+    g.addEventListener('click', go);
+    $('gKey').addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+    $('gKey').focus();
+  }
+  var r = $('reload');
+  if (r) r.addEventListener('click', function () { load(true); });
+  var f = $('forget');
+  if (f) f.addEventListener('click', function () {
+    LS.del('key'); KEY = ''; D = null; VIEW = 'gate'; draw();
+  });
+}
+/* 검색칸만 다시 그리면 커서가 튄다 — 목록만 갈아 끼운다 */
+function redrawKeep(q) {
+  var box = APP.querySelector('.chips');
+  if (!box || !D || !D.tt) return;
+  var all = (D.tt.byTeacher || []).map(function (t) { return t.name; })
+    .filter(function (n) { return n; });
+  var s = meQ.trim();
+  var hit = s ? all.filter(function (n) { return n.indexOf(s) >= 0; }) : all;
+  box.innerHTML = hit.slice(0, 200).map(function (n) {
+    return '<button type="button" class="chip' + (n === ME ? ' on' : '')
+      + '" data-me="' + esc(n) + '">' + esc(n) + '</button>';
+  }).join('');
+  box.querySelectorAll('[data-me]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      ME = b.dataset.me; LS.set('me', ME); VIEW = 'tt'; draw();
+    });
+  });
+}
+
+/* ══ 서비스워커 — 새 판을 «찾아보고» 스스로 바뀐다 ═══════════ */
+(function () {
+  if (!('serviceWorker' in navigator)) return;
+  navigator.serviceWorker.register('sw.js').then(function (reg) {
+    /* 새 판을 찾아보는 일은 거절될 수 있다(file:// 로 열어 볼 때 등) — 조용히 넘어간다 */
+    var up = function () { try { var p = reg.update(); if (p && p.catch) p.catch(function () {}); }
+      catch (e) {} };
+    up();                                                           // 열자마자
+    document.addEventListener('visibilitychange', function () {     // 다시 앞으로 나올 때마다
+      if (!document.hidden) up();
+    });
+    setInterval(up, 30 * 60 * 1000);                                 // 켜 둔 채로도 30분마다
+    /* 새 판이 준비되면 통째로 새로고침하기 전에 한 번 알린다 —
+       글을 보던 중에 화면이 저 혼자 바뀌면 놀란다 */
+    reg.addEventListener('updatefound', function () {
+      var sw = reg.installing;
+      if (!sw) return;
+      sw.addEventListener('statechange', function () {
+        if (sw.state === 'installed' && navigator.serviceWorker.controller) {
+          $('newver').style.display = 'flex';
+        }
+      });
+    });
+  }).catch(function () { /* file:// 로 열어 볼 때는 등록이 안 된다 — 화면은 멀쩡히 돈다 */ });
+  var refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', function () {
+    if (refreshing) return; refreshing = true; location.reload();
+  });
+  $('nvBtn').addEventListener('click', function () { location.reload(); });
+})();
+
+/* ══ 시작 ═══════════════════════════════════════════════ */
+(function () {
+  var c = LS.get('cache', '');
+  if (c) { try { D = JSON.parse(c); } catch (e) {} }   // 먼저 지난 것을 보여 준다
+  if (!KEY) { VIEW = 'gate'; draw(); }
+  else { draw(); load(); }
+  /* 앱을 다시 앞으로 꺼낼 때 자료도 같이 새로 받는다 */
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && KEY && !LOADING) load();
+  });
+})();
+</script>
+</body>
+</html>
