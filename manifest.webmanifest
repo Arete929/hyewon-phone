@@ -1,6 +1,6 @@
 {
-  "name": "혜원폰",
-  "short_name": "혜원폰",
+  "name": "혜원이지",
+  "short_name": "혜원이지",
   "description": "혜원여자중학교 — 시간표·급식·학사일정·주간업무·바로가기를 한 곳에서",
   "start_url": "./index.html",
   "scope": "./",

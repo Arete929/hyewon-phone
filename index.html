@@ -6,10 +6,10 @@
 <meta name="theme-color" content="#27187E">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="혜원폰">
+<meta name="apple-mobile-web-app-title" content="혜원이지">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-512.png">
-<title>혜원폰</title>
+<title>혜원이지</title>
 <style>
 /* ── 색 ────────────────────────────────────────────────────
    진호알리미·혜원이지의 «고스트» 를 그대로 가져왔다. 폰에서도 같은 집이어야 한다.
@@ -205,7 +205,7 @@ table.tt td.today{background:color-mix(in srgb,var(--accent) 9%,var(--card))}
 
 <script>
 /* ══════════════════════════════════════════════════════════
-   혜원폰 | @version 1.0.0
+   혜원이지 | @version 1.0.0
    수정요약: v1.0.0 첫 판 — 타일 홈 + 시간표·급식·학사일정·주간업무·바로가기
 
    ★ 폰은 아무것도 긁지 않는다. «다리»(GAS)가 다 긁어서 정리해 준 것만 받는다.
@@ -213,7 +213,7 @@ table.tt td.today{background:color-mix(in srgb,var(--accent) 9%,var(--card))}
    ★ 드롭다운(select)은 쓰지 않는다 — 칩·단추로 고른다.
    ══════════════════════════════════════════════════════════ */
 
-var VERSION = '1.0.0';
+var VERSION = '1.1.0';
 var BRIDGE = 'https://script.google.com/macros/s/'
   + 'AKfycbzsemwlt0CehxbnVofhLPRrc2jRS1oSZyOpFVUTjBnq1Kohee9RziZFYYS1qLyadBcM/exec';
 
@@ -288,8 +288,8 @@ function load(fresh) {
 function viewGate() {
   return '<div class="gate">'
     + '<img src="icon-512.png" alt="">'
-    + '<h1>혜원폰</h1>'
-    + '<p>혜원여자중학교 선생님용입니다.<br>학교 공용 암호를 한 번만 넣으면 기억합니다.</p>'
+    + '<h1>혜원이지</h1>'
+    + '<p>혜원여자중학교 선생님용입니다. <b>폰에서 보는 혜원이지</b>입니다.<br>학교 공용 암호를 한 번만 넣으면 기억합니다.</p>'
     + '<input class="fld" id="gKey" type="password" inputmode="text"'
     + ' autocomplete="current-password" placeholder="암호">'
     + '<button class="btn" id="gGo">들어가기</button>'
@@ -595,7 +595,7 @@ function viewSet() {
     + '<button class="btn ghost" id="reload">지금 새로 받기</button></div>'
     + '<div class="card"><h2>암호</h2>'
     + '<button class="btn ghost" id="forget">이 폰에서 암호 지우기</button></div>'
-    + '<div class="foot">혜원폰 v' + VERSION + '</div>';
+    + '<div class="foot">혜원이지 v' + VERSION + '</div>';
 }
 
 function notyet(err) {
@@ -607,7 +607,7 @@ function notyet(err) {
 
 /* ══ 그리기 ═════════════════════════════════════════════ */
 var TITLES = {
-  home: '혜원폰', tt: '시간표', meal: '급식', ac: '학사일정',
+  home: '혜원이지', tt: '시간표', meal: '급식', ac: '학사일정',
   work: '주간업무', link: '바로가기', set: '설정', me: '내 이름'
 };
 function draw() {
@@ -626,7 +626,7 @@ function draw() {
 
   APP.innerHTML = '<div class="top">'
     + (VIEW === 'home' ? '' : '<button type="button" class="back" data-go="home">‹</button>')
-    + '<h1>' + esc(TITLES[VIEW] || '혜원폰') + '</h1>'
+    + '<h1>' + esc(TITLES[VIEW] || '혜원이지') + '</h1>'
     + (VIEW === 'home'
       ? '<button type="button" class="act" data-go="set">설정</button>'
       : '')
