@@ -9,6 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="혜원이지">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-512.png">
+<link rel="icon" type="image/png" href="icon-192.png">
 <title>혜원이지</title>
 <style>
 /* ── 색 ────────────────────────────────────────────────────
@@ -157,7 +158,7 @@ table.tt td.today{background:color-mix(in srgb,var(--accent) 9%,var(--card))}
 
 /* ── 첫 화면(암호) ───────────────────────────────────── */
 .gate{max-width:340px;margin:14vh auto 0;padding:0 var(--pad);text-align:center}
-.gate img{width:78px;height:78px;border-radius:20px;margin-bottom:14px}
+.gate img{width:96px;height:96px;object-fit:contain;margin-bottom:14px}
 .gate h1{font-size:23px;margin:0 0 6px;font-weight:800;letter-spacing:-.6px}
 .gate p{color:var(--dim);font-size:13.5px;margin:0 0 18px;line-height:1.6}
 .btn{
@@ -205,8 +206,8 @@ table.tt td.today{background:color-mix(in srgb,var(--accent) 9%,var(--card))}
 
 <script>
 /* ══════════════════════════════════════════════════════════
-   혜원이지 | @version 1.0.0
-   수정요약: v1.0.0 첫 판 — 타일 홈 + 시간표·급식·학사일정·주간업무·바로가기
+   혜원이지 | @version 1.2.0
+   수정요약: v1.2.0 로그인 화면 로고와 설치용 앱 아이콘을 «혜원» 꽃 3D 로고(투명 배경)로 · icon-192 추가. / v1.1.0 이름을 «혜원이지» 로. / v1.0.0 첫 판 — 타일 홈 + 시간표·급식·학사일정·주간업무·바로가기
 
    ★ 폰은 아무것도 긁지 않는다. «다리»(GAS)가 다 긁어서 정리해 준 것만 받는다.
      폰 브라우저는 남의 사이트를 직접 못 부르기 때문이다(같은 출처 규칙).

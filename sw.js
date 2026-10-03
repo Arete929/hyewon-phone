@@ -1,4 +1,4 @@
-/* 혜원이지 서비스워커 | @version 1.0.0
+/* 혜원이지 서비스워커 | @version 1.2.0
    ★ 새 판이 나오면 «스스로» 바뀌어야 한다.
      기본 PWA 는 새 판을 받아 놓고도 «대기» 만 하다가, 앱을 완전히 닫아야 바뀐다.
      백그라운드에 둔 폰은 옛 판을 계속 쓴다 — 그게 아침걷기에서 겪은 일이다.
@@ -8,8 +8,8 @@
        ③ controllerchange   — 바뀌면 화면이 스스로 새로고침한다    (index.html)
        ④ visibilitychange   — 앞으로 나올 때마다 새 판을 «찾아본다» (index.html)
      ④ 가 없으면 ①②③ 이 다 있어도 소용없다. 찾아보질 않으니 발견을 못 한다. */
-var CACHE = 'phone-v1.1.0';
-var ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-512.png'];
+var CACHE = 'phone-v1.2.0';
+var ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-512.png', './icon-192.png'];
 
 self.addEventListener('install', function (e) {
   e.waitUntil(
