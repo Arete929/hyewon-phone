@@ -64,6 +64,8 @@ button,input{font:inherit;color:inherit}
   letter-spacing:-.4px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .nav button .li{width:23px;height:23px;display:block}
 .nav button.on{color:var(--accent)}
+.wkdesc{font-size:12.5px;color:var(--dim);margin:0 2px 10px;line-height:1.55}.wkdesc b{color:var(--fg)}
+.wkweeks{max-height:132px;overflow-y:auto;margin-bottom:10px;padding:2px}
 /* 문자 문구 (v1.7.0) */
 .tplb{all:unset;display:flex;width:100%;justify-content:space-between;align-items:center;cursor:pointer;font-weight:800}
 .tpl{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 12px;margin-bottom:9px}
@@ -330,15 +332,15 @@ table.tt td.today{background:color-mix(in srgb,var(--accent) 9%,var(--card))}
 
 <script>
 /* ══════════════════════════════════════════════════════════
-   혜원이지 | @version 1.8.1
-   수정요약: v1.8.1 ★홈 타일·하단 바가 눌리지 않던 것 수정 — wire() 안의 로그인용 지역 변수 go 가 이동 함수 go() 를 가려서 «go is not a function» 이었다(v1.4.0부터). / v1.8.0 문자 문구를 «태그 → 내용 고치기 → 자동 미리보기» 작성기로 — 발송 대상(학생/학부모)별 태그(추가·저장·초기화·삭제), {이름}=성 뺀 이름·{성명}=전체, 쓰는 대로 미리보기, 줄바꿈 그대로. / v1.7.0 문자 문구 — 문구 저장·고치기·지우기, 자리표({이름} {날짜} {반} {선생님}), 연락처를 미리 등록(직접·우리 반 명단·붙여넣기·안드로이드 연락처 가져오기)해 받는 사람을 채워 문자 앱을 연다(한 사람씩). 데이터는 이 폰에만. / v1.6.0 급식 여중·여고 점심 둘 다(홈 타일 포함) · 출결(담임 확인: 컴시간 번호·가린 이름 + 역할표, 보기·새 출결 적기·방금 넣은 것 취소). / v1.5.0 시간표에 «학급 시간표» · 급식에 주 넘기기/날짜로 이동/급식지도/날짜·이름 찾기 (다리 v1.2.0 의 what=cls·duty 사용). / v1.4.0 하단 바에 뒤로·앞으로 버튼(홈은 기존 홈 탭) — 화면 기록을 history 로 쌓아 안드로이드 뒤로 버튼과도 같이 감. / v1.3.1 앱 아이콘 로고를 틀 가득(높이 104%, 뾰족한 잎 끝 약간 잘림) · 아이폰용 apple-touch-icon.png 따로. / v1.3.0 하단 내비게이션 바(홈·시간표·급식·학사일정·주간업무·바로가기) · 앱 아이콘 배경을 로고 빨강(#E9030C)으로 · 앱 안 로고는 투명 logo-512.png. / v1.2.9 마스크용 아이콘 — 로고 외접원이 캔버스를 가득(99%) 채우게 키움(흰 틀이 최대한 가려지게). / v1.2.8 앱 아이콘 — 로고를 틀 가득(any 98%·maskable 안전영역 가득) 크게, 배경 투명. / v1.2.7 표 안 글은 원래 줄바꿈 자리에서만 줄바꿈(자동 꺾임 없음) — 넓으면 좌우로 밀어 봄. / v1.2.6 주간업무 읽기 쉽게 — 줄간격 넓힘·번호/기호 내어쓰기와 단계별 들여쓰기·표를 가로로 밀어 보게 하고 짧은 칸은 한 줄로·표 머리줄/줄무늬. / v1.2.5 새로고침해도 옛 판이 뜨던 것(서비스워커) 수정 — sw.js 머리말 참고. / v1.2.4 학사일정 «1년 전체» 칩 + 묵은 탭(ok:false)이 같은 달로 겹쳐 나오던 것 제거. / v1.2.3 학사일정 — 타일 이름을 «학사일정» 으로, 달 칩으로 다른 달도 본다. / v1.2.2 타일 이모지(📘🍚📅📋🔗)를 선 아이콘으로. / v1.2.1 로그인 뒤 홈 머리글에 로고 · 화면에 보이는 버전 표기를 맞춤(그전엔 1.1.0 으로 남아 있었다). / v1.2.0 로그인 화면 로고와 설치용 앱 아이콘을 «혜원» 꽃 3D 로고(투명 배경)로 · icon-192 추가. / v1.1.0 이름을 «혜원이지» 로. / v1.0.0 첫 판 — 타일 홈 + 시간표·급식·학사일정·주간업무·바로가기
+   혜원이지 | @version 1.9.0
+   수정요약: v1.9.0 주간업무 «입력본 / 합본» 구분 — 합본은 주 목록에서 골라 한 주씩(최신이 맨 위). / v1.8.1 ★홈 타일·하단 바가 눌리지 않던 것 수정 — wire() 안의 로그인용 지역 변수 go 가 이동 함수 go() 를 가려서 «go is not a function» 이었다(v1.4.0부터). / v1.8.0 문자 문구를 «태그 → 내용 고치기 → 자동 미리보기» 작성기로 — 발송 대상(학생/학부모)별 태그(추가·저장·초기화·삭제), {이름}=성 뺀 이름·{성명}=전체, 쓰는 대로 미리보기, 줄바꿈 그대로. / v1.7.0 문자 문구 — 문구 저장·고치기·지우기, 자리표({이름} {날짜} {반} {선생님}), 연락처를 미리 등록(직접·우리 반 명단·붙여넣기·안드로이드 연락처 가져오기)해 받는 사람을 채워 문자 앱을 연다(한 사람씩). 데이터는 이 폰에만. / v1.6.0 급식 여중·여고 점심 둘 다(홈 타일 포함) · 출결(담임 확인: 컴시간 번호·가린 이름 + 역할표, 보기·새 출결 적기·방금 넣은 것 취소). / v1.5.0 시간표에 «학급 시간표» · 급식에 주 넘기기/날짜로 이동/급식지도/날짜·이름 찾기 (다리 v1.2.0 의 what=cls·duty 사용). / v1.4.0 하단 바에 뒤로·앞으로 버튼(홈은 기존 홈 탭) — 화면 기록을 history 로 쌓아 안드로이드 뒤로 버튼과도 같이 감. / v1.3.1 앱 아이콘 로고를 틀 가득(높이 104%, 뾰족한 잎 끝 약간 잘림) · 아이폰용 apple-touch-icon.png 따로. / v1.3.0 하단 내비게이션 바(홈·시간표·급식·학사일정·주간업무·바로가기) · 앱 아이콘 배경을 로고 빨강(#E9030C)으로 · 앱 안 로고는 투명 logo-512.png. / v1.2.9 마스크용 아이콘 — 로고 외접원이 캔버스를 가득(99%) 채우게 키움(흰 틀이 최대한 가려지게). / v1.2.8 앱 아이콘 — 로고를 틀 가득(any 98%·maskable 안전영역 가득) 크게, 배경 투명. / v1.2.7 표 안 글은 원래 줄바꿈 자리에서만 줄바꿈(자동 꺾임 없음) — 넓으면 좌우로 밀어 봄. / v1.2.6 주간업무 읽기 쉽게 — 줄간격 넓힘·번호/기호 내어쓰기와 단계별 들여쓰기·표를 가로로 밀어 보게 하고 짧은 칸은 한 줄로·표 머리줄/줄무늬. / v1.2.5 새로고침해도 옛 판이 뜨던 것(서비스워커) 수정 — sw.js 머리말 참고. / v1.2.4 학사일정 «1년 전체» 칩 + 묵은 탭(ok:false)이 같은 달로 겹쳐 나오던 것 제거. / v1.2.3 학사일정 — 타일 이름을 «학사일정» 으로, 달 칩으로 다른 달도 본다. / v1.2.2 타일 이모지(📘🍚📅📋🔗)를 선 아이콘으로. / v1.2.1 로그인 뒤 홈 머리글에 로고 · 화면에 보이는 버전 표기를 맞춤(그전엔 1.1.0 으로 남아 있었다). / v1.2.0 로그인 화면 로고와 설치용 앱 아이콘을 «혜원» 꽃 3D 로고(투명 배경)로 · icon-192 추가. / v1.1.0 이름을 «혜원이지» 로. / v1.0.0 첫 판 — 타일 홈 + 시간표·급식·학사일정·주간업무·바로가기
 
    ★ 폰은 아무것도 긁지 않는다. «다리»(GAS)가 다 긁어서 정리해 준 것만 받는다.
      폰 브라우저는 남의 사이트를 직접 못 부르기 때문이다(같은 출처 규칙).
    ★ 드롭다운(select)은 쓰지 않는다 — 칩·단추로 고른다.
    ══════════════════════════════════════════════════════════ */
 
-var VERSION = '1.8.1';
+var VERSION = '1.9.0';
 var BRIDGE = 'https://script.google.com/macros/s/'
   + 'AKfycbzsemwlt0CehxbnVofhLPRrc2jRS1oSZyOpFVUTjBnq1Kohee9RziZFYYS1qLyadBcM/exec';
 
@@ -1276,20 +1278,31 @@ function viewAc() {
 }
 
 /* ── 주간업무 ────────────────────────────────────────── */
-function thisWeek() {
+function thisWeek() {   // 홈 타일용 — 입력본(지금 쓰는 문서)의 마지막 주
   if (!D || !D.work) return null;
   var w = D.work.input;
   if (w && w.length) return w[w.length - 1];
   var m = D.work.merged;
-  return (m && m.length) ? m[m.length - 1] : null;
+  return (m && m.length) ? m[0] : null;
 }
-function viewWork() {
-  if (!D || !D.work) return notyet(D && D.workError);
-  var wk = thisWeek();
-  if (!wk) {
-    return '<div class="empty">주간업무를 읽지 못했습니다.'
-      + (D.work.error ? '<br>' + esc(D.work.error) : '') + '</div>';
-  }
+/* ── 주간업무: «입력본» / «합본» 구분 ──
+   입력본 = 부서들이 지금 입력하는 문서(이번 주·다음 주). 합본 = 주차별로 합쳐 둔 문서(최신이 맨 앞). */
+var WK = { doc: LS.get('workdoc', 'input') === 'merged' ? 'merged' : 'input', ii: -1, mi: 0, cache: {}, busy: false, err: '' };
+function wkShort(range) {
+  var m = String(range || '').match(/(\d{4})\.\s*(\d+)\.\s*(\d+)\.[^~]*~\s*(\d{4})\.\s*(\d+)\.\s*(\d+)\./);
+  return m ? (+m[2]) + '/' + (+m[3]) + ' ~ ' + (+m[5]) + '/' + (+m[6]) : String(range || '');
+}
+function wkLoadMerged(i) {
+  if (WK.busy) return;
+  WK.busy = true; WK.err = '';
+  bridgeGet('work', '&doc=merged&i=' + i).then(function (j) {
+    WK.busy = false;
+    if (j.work && j.work.week) WK.cache[i] = j.work.week; else WK.err = j.workError || '그 주를 받지 못했습니다';
+    if (VIEW === 'work') draw();
+  }).catch(function (e) { WK.busy = false; WK.err = '못 받았습니다 — ' + ((e && e.message) || e); if (VIEW === 'work') draw(); });
+}
+function wkShowOn() { setTimeout(function () { var e = document.querySelector('.wkweeks .chip.on'), box = document.querySelector('.wkweeks'); if (e && box) box.scrollTop = Math.max(0, e.offsetTop - box.offsetTop - 6); }, 30); }
+function wkBody(wk) {
   var h = '<div class="card"><h2>' + esc(wk.range) + '</h2>';
   if (wk.days && wk.days.length) {
     h += wk.days.filter(function (d) { return d.items && d.items.length; })
@@ -1304,6 +1317,32 @@ function viewWork() {
       + (dp.blocks || []).map(function (x) { return blockHtml(x, false); }).join('') + '</div>';
   }).join('');
   return h;
+}
+function viewWork() {
+  if (!D || !D.work) return notyet(D && D.workError);
+  var W = D.work, inp = W.input || [], ml = W.mergedList || [], isIn = WK.doc === 'input';
+  var h = '<div class="seg2"><button type="button" class="chip' + (isIn ? ' on' : '') + '" data-wkdoc="input">입력본</button>'
+    + '<button type="button" class="chip' + (!isIn ? ' on' : '') + '" data-wkdoc="merged">합본 <small>' + (W.mergedAll || ml.length || 0) + '주</small></button></div>'
+    + '<div class="wkdesc">' + (isIn ? '<b>입력본</b> — 부서들이 지금 입력하는 문서입니다(이번 주·다음 주 계획).' : '<b>합본</b> — 주차별로 합쳐 둔 문서입니다(최신이 맨 위).') + '</div>';
+  if (isIn) {
+    if (!inp.length) return h + '<div class="empty">입력본을 읽지 못했습니다.' + (W.error ? '<br>' + esc(W.error) : '') + '</div>';
+    if (WK.ii < 0 || WK.ii >= inp.length) WK.ii = inp.length - 1;
+    if (inp.length > 1) h += '<div class="chips" style="margin-bottom:10px">' + inp.map(function (w, i) {
+      return '<button type="button" class="chip' + (i === WK.ii ? ' on' : '') + '" data-wkin="' + i + '">' + esc(wkShort(w.range)) + '</button>';
+    }).join('') + '</div>';
+    return h + wkBody(inp[WK.ii]);
+  }
+  if (!ml.length) return h + '<div class="empty">합본을 읽지 못했습니다.' + (W.error ? '<br>' + esc(W.error) : '') + '</div>';
+  if (WK.mi < 0 || WK.mi >= ml.length) WK.mi = 0;
+  h += '<div class="chips wkweeks">' + ml.map(function (w) {
+    return '<button type="button" class="chip' + (w.i === WK.mi ? ' on' : '') + '" data-wkmg="' + w.i + '">' + esc(wkShort(w.range)) + '</button>';
+  }).join('') + '</div>';
+  var wk = WK.cache[WK.mi] || (WK.mi === 0 && W.merged && W.merged[0]) || null;
+  if (!wk) {
+    if (!WK.busy && !WK.err) wkLoadMerged(WK.mi);
+    return h + (WK.err ? '<div class="empty">' + esc(WK.err) + '</div><button class="btn ghost" data-wkretry="1">다시 받기</button>' : '<div class="spin">' + esc(wkShort(ml[WK.mi].range)) + ' 주를 불러오는 중…</div>');
+  }
+  return h + wkBody(wk);
 }
 /* 문단 맨 앞 번호·기호 — 1. / 가. / 1) / 가) / ① / ○ - · ※ 등. 깊이를 정해 들여쓰고, 기호는 따로 떼어 내어쓰기 한다 */
 var MARK = /^(\s*)(\d{1,2}\.|[가-힣]\.|\d{1,2}\)|[가-힣]\)|[①-⑳]|[○●◦ㅇ·∙•▶▷※\-*])\s+([\s\S]*)$/;
@@ -1608,6 +1647,12 @@ function wire() {
     });
     smsSave(); SMS.paste = null; SMS.msg = ''; draw();
   });
+  /* 주간업무 — 입력본/합본 */
+  if (VIEW === 'work' && WK.doc === 'merged') wkShowOn();   // 고른 주 칩이 보이는 자리로(다시 그릴 때마다)
+  APP.querySelectorAll('[data-wkdoc]').forEach(function (b) { b.addEventListener('click', function () { WK.doc = b.dataset.wkdoc; LS.set('workdoc', WK.doc); WK.err = ''; draw(); window.scrollTo(0, 0); }); });
+  APP.querySelectorAll('[data-wkin]').forEach(function (b) { b.addEventListener('click', function () { WK.ii = Number(b.dataset.wkin); draw(); window.scrollTo(0, 0); }); });
+  APP.querySelectorAll('[data-wkmg]').forEach(function (b) { b.addEventListener('click', function () { WK.mi = Number(b.dataset.wkmg); WK.err = ''; draw(); window.scrollTo(0, 0); wkShowOn(); }); });
+  APP.querySelectorAll('[data-wkretry]').forEach(function (b) { b.addEventListener('click', function () { WK.err = ''; draw(); }); });
   APP.querySelectorAll('[data-acm]').forEach(function (b) {
     b.addEventListener('click', function () { AC_M = b.dataset.acm; draw(); });
   });
