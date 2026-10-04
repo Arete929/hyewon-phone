@@ -60,10 +60,103 @@ button,input{font:inherit;color:inherit}
   background:var(--bg);border-top:1px solid var(--line);
   padding:6px 2px calc(6px + env(safe-area-inset-bottom))}
 .nav button{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px;
-  background:none;border:0;padding:5px 0;color:var(--dim);font-size:10.5px;font-weight:700;
-  letter-spacing:-.3px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  background:none;border:0;padding:5px 0;color:var(--dim);font-size:10px;font-weight:700;
+  letter-spacing:-.4px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .nav button .li{width:23px;height:23px;display:block}
 .nav button.on{color:var(--accent)}
+/* 문자 문구 (v1.7.0) */
+.tplb{all:unset;display:flex;width:100%;justify-content:space-between;align-items:center;cursor:pointer;font-weight:800}
+.tpl{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 12px;margin-bottom:9px}
+.tplb span{font-size:10.5px;padding:2px 9px;border-radius:999px;background:var(--accent);color:var(--on);margin-left:8px}
+.tplb span.s{background:var(--card2);color:var(--fg)}
+.tpl p{margin:6px 0 0;font-size:12.5px;line-height:1.55;color:var(--fg2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tplact{display:flex;gap:6px;margin-top:8px}.tplact .btn{flex:1}
+.ask{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:8px;padding:8px 10px;border-radius:10px;background:color-mix(in srgb,var(--warn) 12%,var(--bg));font-size:13px;font-weight:700}
+.smsrow{padding:0;align-items:stretch;flex-wrap:wrap}
+.smsedit{all:unset;box-sizing:border-box;flex:1;min-width:0;display:flex;gap:10px;padding:10px 12px;cursor:pointer;align-items:center}
+.smsedit .att-tags{margin:0 0 0 auto}
+.callbtns{display:flex;gap:6px;padding:0 10px 0 0;align-items:center}
+.callbtn{display:inline-flex;align-items:center;gap:4px;padding:8px 11px;border-radius:999px;background:var(--ok);color:#fff;font-weight:800;font-size:12px;text-decoration:none}
+.callbtn .li{width:15px;height:15px;stroke:#fff}
+.callnow{display:inline-flex;align-items:center;gap:6px;margin-top:8px;text-decoration:none;color:var(--ok)}
+.btn .li{width:18px;height:18px;display:inline-block;vertical-align:-4px;margin-right:4px}
+.btn.sm .li{margin-right:0}
+.tagbox{margin:10px 0;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--accent) 8%,var(--bg));border:1px dashed var(--line);font-size:13px;line-height:1.6}
+.tagbox .tgt{font-weight:800;color:var(--accent)}.tagbox .tgok{margin:6px 0;font-weight:700;color:var(--ok)}.tagbox .btn{margin-top:6px}
+.tagexp{margin:2px 0 4px;padding:8px 10px;border-radius:10px;background:color-mix(in srgb,var(--accent) 8%,var(--bg));font-size:12px;line-height:1.55;color:var(--fg2)}
+.pv{white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;padding:12px 13px;border-radius:12px;background:#fff;border:1px solid var(--line);color:#222;font-size:14.5px;line-height:1.65;min-height:90px}
+.dirty{color:var(--warn);font-weight:800;font-size:11px;margin-left:6px}
+.chip.addtag{border-style:dashed;color:var(--accent)}
+.note2{font-size:11.5px;color:var(--dim);margin:8px 2px 0;line-height:1.55}
+.chip.nonum{opacity:.55;border-style:dashed}
+.smsrow{width:100%;text-align:left;cursor:pointer;color:inherit;font:inherit;align-items:center}
+.smsrow .att-tags{margin:0;margin-left:auto}
+textarea.fld{resize:vertical;line-height:1.55;font-size:15px}
+.btn.send{background:var(--ok);color:#fff;flex:1}
+/* 급식 여중·여고 · 출결 (v1.6.0) */
+.meal .sblk{margin-top:8px}.meal .sblk:first-of-type{margin-top:4px}
+.meal .sch{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.meal .sch b{font-size:12px;padding:2px 9px;border-radius:999px;background:var(--accent);color:var(--on)}
+.meal .sblk + .sblk .sch b{background:var(--card2);color:var(--fg)}
+.meal .sch em{font-style:normal;font-size:11.5px;color:var(--dim)}.meal .sch .bad{color:var(--warn)}
+.meal .none1{font-size:12.5px}
+.att-no{text-align:center;padding:26px 16px}
+.att-no h3{margin:8px 0 6px;font-size:18px}
+.att-no-ic .li{width:44px;height:44px;color:var(--dim);margin:0 auto;display:block}
+.att-me{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px}
+.att-me small{width:100%;color:var(--dim);font-size:12.5px}
+.chipx{font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;background:var(--accent);color:var(--on)}
+.att-new{margin-bottom:12px}
+.att-form h2 small{font-weight:700;color:var(--accent);margin-left:6px}
+.att-lab{font-size:12px;font-weight:800;color:var(--dim);margin:10px 0 5px}
+.att-stu{max-height:210px;overflow-y:auto}
+.att-conf{display:flex;flex-direction:column;gap:6px;padding:10px 12px;border-radius:12px;background:var(--bg)}
+.att-conf div{display:flex;gap:10px;font-size:14px}.att-conf span{width:42px;color:var(--dim);flex:none}
+.att-ok{display:flex;flex-direction:column;gap:8px;padding:10px 12px;border-radius:12px;margin-bottom:10px;background:color-mix(in srgb,var(--ok) 14%,var(--bg));color:var(--ok);font-weight:700;font-size:13.5px}
+.att-ok .btn{align-self:flex-start;color:var(--fg)}
+.att-sum{font-weight:800;color:var(--dim);font-size:13px;margin:2px 2px 8px}
+.att-day{font-weight:800;font-size:13px;margin:12px 2px 6px;color:var(--fg2)}
+.att-row{display:flex;gap:10px;padding:10px 12px;margin-bottom:6px;border-radius:14px;background:var(--card);border:1px solid var(--line)}
+.att-who{display:flex;flex-direction:column;min-width:54px}.att-who b{font-size:14px}.att-who small{color:var(--dim);font-size:11px}
+.att-body{flex:1;min-width:0;font-size:13.5px}
+.att-type{font-weight:800;padding:1px 8px;border-radius:999px;font-size:12px;background:var(--card2)}
+.att-type.ill{background:color-mix(in srgb,var(--warn) 18%,var(--bg));color:var(--warn)}
+.att-type.rec{background:color-mix(in srgb,var(--ok) 16%,var(--bg));color:var(--ok)}
+.att-rs{margin-top:3px;color:var(--fg2);word-break:keep-all;overflow-wrap:anywhere}
+.att-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}.tg{font-size:10.5px;font-weight:800;padding:1px 7px;border-radius:999px;background:var(--card2);color:var(--dim)}
+.tg.ok{background:color-mix(in srgb,var(--ok) 16%,var(--bg));color:var(--ok)}
+.atwarn{margin:8px 0;padding:8px 12px;border-radius:10px;background:color-mix(in srgb,var(--warn) 14%,var(--bg));color:var(--warn);font-weight:700;font-size:13px}
+/* 시간표·급식 보강 (v1.5.0) */
+.seg2{display:flex;gap:6px;margin-bottom:10px}
+.seg2 .chip{flex:1;text-align:center;padding:10px 0;font-weight:800}
+table.tt.cl{min-width:0;width:100%;table-layout:fixed}
+table.tt.cl th:first-child{width:38px}
+table.tt.cl td,table.tt.cl th{padding:4px 2px}
+table.tt.cl td b{display:block;font-size:11.5px;word-break:keep-all}
+table.tt.cl td u{display:block;text-decoration:none;font-size:10px;color:var(--dim);margin-top:1px}
+.mlsbox{border:2px solid var(--accent);border-radius:16px;padding:12px;margin-bottom:12px;background:var(--card)}
+.mlsbt{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-weight:800;margin-bottom:8px}
+.mlsbt .li{width:18px;height:18px;display:block}
+.mlsbt small{color:var(--dim);font-weight:600;font-size:11px}
+.mlrow{display:flex;gap:6px}.mlrow .fld{flex:1;min-width:0}
+.btn.sm{padding:10px 14px;font-size:13px;width:auto;flex:none}
+.mlnav{display:flex;gap:6px;margin-bottom:8px}.mlnav .btn{flex:1}
+.mlnav .btn.on{background:var(--accent);color:var(--on);border-color:var(--accent)}
+.mldate{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;flex:1}
+.mldate input{flex:1;min-width:0;padding:9px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg);font:inherit}
+.mlweek{font-weight:800;color:var(--dim);margin:6px 2px 8px;font-size:13px}
+.mlfind{margin-top:10px;padding:10px 12px;border-radius:12px;background:var(--bg);font-size:13.5px;line-height:1.7}
+.mlfind.bad{color:var(--warn)}.mlfind .nm{color:var(--accent)}
+.mlgos{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.mlgo.past{opacity:.5}.mlgo small{opacity:.7;margin-left:2px}.mlgo i{font-style:normal;opacity:.8}.mlgo u{text-decoration:none;font-weight:800}
+.meal.today{border-color:var(--accent);border-width:2px}
+.meal.focus{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 35%,transparent)}
+.meal.none .muted{font-size:13px}
+.meal .duty{margin-top:8px;padding-top:7px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--dim)}
+.meal .duty b{color:var(--accent)}
+.nav button.navb{flex:.78}
+.nav button:disabled{opacity:.3;cursor:default}
+.nav button span{white-space:nowrap}
 .nav button.on span{font-weight:800}
 
 /* ── 오늘 띠 ──────────────────────────────────────────── */
@@ -237,15 +330,15 @@ table.tt td.today{background:color-mix(in srgb,var(--accent) 9%,var(--card))}
 
 <script>
 /* ══════════════════════════════════════════════════════════
-   혜원이지 | @version 1.3.1
-   수정요약: v1.3.1 앱 아이콘 로고를 틀 가득(높이 104%, 뾰족한 잎 끝 약간 잘림) · 아이폰용 apple-touch-icon.png 따로. / v1.3.0 하단 내비게이션 바(홈·시간표·급식·학사일정·주간업무·바로가기) · 앱 아이콘 배경을 로고 빨강(#E9030C)으로 · 앱 안 로고는 투명 logo-512.png. / v1.2.9 마스크용 아이콘 — 로고 외접원이 캔버스를 가득(99%) 채우게 키움(흰 틀이 최대한 가려지게). / v1.2.8 앱 아이콘 — 로고를 틀 가득(any 98%·maskable 안전영역 가득) 크게, 배경 투명. / v1.2.7 표 안 글은 원래 줄바꿈 자리에서만 줄바꿈(자동 꺾임 없음) — 넓으면 좌우로 밀어 봄. / v1.2.6 주간업무 읽기 쉽게 — 줄간격 넓힘·번호/기호 내어쓰기와 단계별 들여쓰기·표를 가로로 밀어 보게 하고 짧은 칸은 한 줄로·표 머리줄/줄무늬. / v1.2.5 새로고침해도 옛 판이 뜨던 것(서비스워커) 수정 — sw.js 머리말 참고. / v1.2.4 학사일정 «1년 전체» 칩 + 묵은 탭(ok:false)이 같은 달로 겹쳐 나오던 것 제거. / v1.2.3 학사일정 — 타일 이름을 «학사일정» 으로, 달 칩으로 다른 달도 본다. / v1.2.2 타일 이모지(📘🍚📅📋🔗)를 선 아이콘으로. / v1.2.1 로그인 뒤 홈 머리글에 로고 · 화면에 보이는 버전 표기를 맞춤(그전엔 1.1.0 으로 남아 있었다). / v1.2.0 로그인 화면 로고와 설치용 앱 아이콘을 «혜원» 꽃 3D 로고(투명 배경)로 · icon-192 추가. / v1.1.0 이름을 «혜원이지» 로. / v1.0.0 첫 판 — 타일 홈 + 시간표·급식·학사일정·주간업무·바로가기
+   혜원이지 | @version 1.8.0
+   수정요약: v1.8.0 문자 문구를 «태그 → 내용 고치기 → 자동 미리보기» 작성기로 — 발송 대상(학생/학부모)별 태그(추가·저장·초기화·삭제), {이름}=성 뺀 이름·{성명}=전체, 쓰는 대로 미리보기, 줄바꿈 그대로. / v1.7.0 문자 문구 — 문구 저장·고치기·지우기, 자리표({이름} {날짜} {반} {선생님}), 연락처를 미리 등록(직접·우리 반 명단·붙여넣기·안드로이드 연락처 가져오기)해 받는 사람을 채워 문자 앱을 연다(한 사람씩). 데이터는 이 폰에만. / v1.6.0 급식 여중·여고 점심 둘 다(홈 타일 포함) · 출결(담임 확인: 컴시간 번호·가린 이름 + 역할표, 보기·새 출결 적기·방금 넣은 것 취소). / v1.5.0 시간표에 «학급 시간표» · 급식에 주 넘기기/날짜로 이동/급식지도/날짜·이름 찾기 (다리 v1.2.0 의 what=cls·duty 사용). / v1.4.0 하단 바에 뒤로·앞으로 버튼(홈은 기존 홈 탭) — 화면 기록을 history 로 쌓아 안드로이드 뒤로 버튼과도 같이 감. / v1.3.1 앱 아이콘 로고를 틀 가득(높이 104%, 뾰족한 잎 끝 약간 잘림) · 아이폰용 apple-touch-icon.png 따로. / v1.3.0 하단 내비게이션 바(홈·시간표·급식·학사일정·주간업무·바로가기) · 앱 아이콘 배경을 로고 빨강(#E9030C)으로 · 앱 안 로고는 투명 logo-512.png. / v1.2.9 마스크용 아이콘 — 로고 외접원이 캔버스를 가득(99%) 채우게 키움(흰 틀이 최대한 가려지게). / v1.2.8 앱 아이콘 — 로고를 틀 가득(any 98%·maskable 안전영역 가득) 크게, 배경 투명. / v1.2.7 표 안 글은 원래 줄바꿈 자리에서만 줄바꿈(자동 꺾임 없음) — 넓으면 좌우로 밀어 봄. / v1.2.6 주간업무 읽기 쉽게 — 줄간격 넓힘·번호/기호 내어쓰기와 단계별 들여쓰기·표를 가로로 밀어 보게 하고 짧은 칸은 한 줄로·표 머리줄/줄무늬. / v1.2.5 새로고침해도 옛 판이 뜨던 것(서비스워커) 수정 — sw.js 머리말 참고. / v1.2.4 학사일정 «1년 전체» 칩 + 묵은 탭(ok:false)이 같은 달로 겹쳐 나오던 것 제거. / v1.2.3 학사일정 — 타일 이름을 «학사일정» 으로, 달 칩으로 다른 달도 본다. / v1.2.2 타일 이모지(📘🍚📅📋🔗)를 선 아이콘으로. / v1.2.1 로그인 뒤 홈 머리글에 로고 · 화면에 보이는 버전 표기를 맞춤(그전엔 1.1.0 으로 남아 있었다). / v1.2.0 로그인 화면 로고와 설치용 앱 아이콘을 «혜원» 꽃 3D 로고(투명 배경)로 · icon-192 추가. / v1.1.0 이름을 «혜원이지» 로. / v1.0.0 첫 판 — 타일 홈 + 시간표·급식·학사일정·주간업무·바로가기
 
    ★ 폰은 아무것도 긁지 않는다. «다리»(GAS)가 다 긁어서 정리해 준 것만 받는다.
      폰 브라우저는 남의 사이트를 직접 못 부르기 때문이다(같은 출처 규칙).
    ★ 드롭다운(select)은 쓰지 않는다 — 칩·단추로 고른다.
    ══════════════════════════════════════════════════════════ */
 
-var VERSION = '1.3.1';
+var VERSION = '1.8.0';
 var BRIDGE = 'https://script.google.com/macros/s/'
   + 'AKfycbzsemwlt0CehxbnVofhLPRrc2jRS1oSZyOpFVUTjBnq1Kohee9RziZFYYS1qLyadBcM/exec';
 
@@ -372,10 +465,10 @@ function viewHome() {
   h += tile('tt', 'book', '오늘 수업', sub, !ME || !mine.length);
 
   /* ② 오늘 급식 */
-  var m = mealOf(todayStr());
+  var tm = todayMeals();
   h += tile('meal', 'meal', '오늘 급식',
-    m ? esc(m.dishes.slice(0, 4).join(' · ')) + (m.dishes.length > 4 ? ' …' : '')
-      : '오늘 급식이 없습니다', !m);
+    tm.length ? tm.map(function (x) { return '<b>' + esc(x.short) + '</b> ' + esc(x.m.dishes.slice(0, 3).join(' · ')) + (x.m.dishes.length > 3 ? ' …' : ''); }).join('<br>')
+      : '오늘 점심이 없습니다', !tm.length);
 
   /* ③ 앞으로 7일 */
   var nx = (D && D.ac && D.ac.next7) || [];
@@ -391,6 +484,8 @@ function viewHome() {
       : '아직 못 받았습니다', !wk);
 
   /* ⑤ 바로가기 — 넓게 */
+  h += tile('att', 'att', '출결', '담임 선생님 출결 보기 · 적기', false);
+  h += tile('sms', 'sms', '문자 문구', '저장해 둔 문구로 학부모·학생에게 문자', false);
   h += tile('link', 'link', '바로가기', '학교에서 함께 쓰는 앱', false, 'wide');
   h += '</div>';
 
@@ -401,6 +496,13 @@ function viewHome() {
 }
 /* 선 아이콘(24×24, 선 굵기 1.8) — 이모지 대신. 색은 글자색을 따라간다 */
 var LINE_IC = {
+  phone: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
+  sms: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8"/><path d="M8 13h5"/>',
+  contact: '<path d="M16 2v2"/><path d="M7 22v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><path d="M8 2v2"/><circle cx="12" cy="11" r="3"/><rect x="3" y="4" width="18" height="18" rx="2"/>',
+  att: '<rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>',
+  search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+  prev: '<path d="m15 18-6-6 6-6"/>',
+  next: '<path d="m9 18 6-6-6-6"/>',
   home: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>',
   book: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
   meal: '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>',
@@ -420,12 +522,78 @@ function tile(go, ic, t, d, none, cls) {
 }
 
 /* ── 시간표 ─────────────────────────────────────────── */
+/* ── 다리 한 가지만 따로 부르기 (학급 시간표·급식 주 넘기기·급식지도) ──
+   홈 자료(what=all)는 가볍게 두고, 이런 것들은 «그 화면을 열 때만» 받아 온다. */
+function bridgeGet(what, extra) {
+  var u = BRIDGE + '?key=' + encodeURIComponent(KEY) + '&what=' + what + (extra || '');
+  return fetch(u, { redirect: 'follow' }).then(function (r) { return r.json(); }).then(function (j) {
+    if (!j.ok) {
+      if (j.need === 'key') { KEY = ''; LS.del('key'); VIEW = 'gate'; ERR = j.error || ''; draw(); }
+      throw new Error(j.error || '못 받았습니다');
+    }
+    return j;
+  });
+}
+
+/* ── 시간표: «내 시간표» / «학급 시간표» ── */
+var TT_MODE = LS.get('ttmode', 'me');
+var CLS = null, clsBusy = false, clsErr = '';
+var TT_GC = LS.get('ttcls', '');     // "3-2"
+function ttToggle() {
+  return '<div class="seg2">'
+    + '<button type="button" class="chip' + (TT_MODE === 'me' ? ' on' : '') + '" data-ttm="me">내 시간표</button>'
+    + '<button type="button" class="chip' + (TT_MODE === 'cls' ? ' on' : '') + '" data-ttm="cls">학급 시간표</button></div>';
+}
+function loadCls() {
+  if (clsBusy) return;
+  clsBusy = true; clsErr = '';
+  bridgeGet('cls').then(function (j) { clsBusy = false; CLS = j.cls || null; if (!CLS) clsErr = j.clsError || '학급 시간표를 받지 못했습니다'; if (VIEW === 'tt') draw(); })
+    .catch(function (e) { clsBusy = false; clsErr = '못 받았습니다 — ' + ((e && e.message) || e); if (VIEW === 'tt') draw(); });
+}
+function viewClsTT() {
+  if (!CLS && !clsBusy && !clsErr) loadCls();
+  if (!CLS) {
+    return clsErr ? '<div class="empty">' + esc(clsErr) + '</div><button class="btn ghost" data-ttretry="1">다시 받기</button>'
+      : '<div class="spin">학급 시간표를 불러오는 중…</div>';
+  }
+  var grades = CLS.classes || [];
+  if (!grades.length) return '<div class="empty">학급 시간표가 아직 없습니다.</div>';
+  var m = String(TT_GC).match(/^(\d+)-(\d+)$/), g = m ? Number(m[1]) : 0, c = m ? Number(m[2]) : 0;
+  var G = grades.filter(function (x) { return x.grade === g; })[0] || grades[0];
+  g = G.grade;
+  var C = G.classes.filter(function (x) { return x.cls === c; })[0] || G.classes[0];
+  c = C.cls;
+  var dow = todayDow(), maxP = 1;
+  C.days.forEach(function (dy) { maxP = Math.max(maxP, (dy.periods || []).length); });
+  var h = '<div class="card"><h2>학급 고르기</h2>'
+    + '<div class="chips" style="margin-bottom:8px">' + grades.map(function (x) {
+      return '<button type="button" class="chip' + (x.grade === g ? ' on' : '') + '" data-ttgc="' + x.grade + '-' + x.classes[0].cls + '">' + x.grade + '학년</button>';
+    }).join('') + '</div>'
+    + '<div class="chips">' + G.classes.map(function (x) {
+      return '<button type="button" class="chip' + (x.cls === c ? ' on' : '') + '" data-ttgc="' + g + '-' + x.cls + '">' + x.cls + '반</button>';
+    }).join('') + '</div></div>';
+  h += '<div class="card"><h2>' + g + '학년 ' + c + '반 · ' + esc((CLS.school || '') + ' ' + (CLS.year || '')) + '</h2>'
+    + '<div class="tt-wrap"><table class="tt cl"><thead><tr><th>교시</th>';
+  C.days.forEach(function (dy) { h += '<th' + (dy.dow === dow ? ' class="today"' : '') + '>' + esc(dy.dow) + '</th>'; });
+  h += '</tr></thead><tbody>';
+  for (var p = 0; p < maxP; p++) {
+    h += '<tr><th>' + (p + 1) + '<br><u style="font-size:9px;color:var(--dim);text-decoration:none">' + esc((CLS.times && CLS.times[p + 1]) || '') + '</u></th>';
+    C.days.forEach(function (dy) {
+      var x = (dy.periods || [])[p];
+      var cls = (dy.dow === dow ? ' today' : (x ? ' on' : ''));
+      h += '<td class="' + cls.trim() + '">' + (x ? '<b>' + esc(x.subject) + '</b><u>' + esc(x.teacher) + '</u>' : '') + '</td>';
+    });
+    h += '</tr>';
+  }
+  return h + '</tbody></table></div></div>';
+}
 function viewTT() {
-  if (!D || !D.tt) return notyet(D && D.ttError);
-  if (!ME) return viewPickMe();
+  if (TT_MODE === 'cls') return ttToggle() + viewClsTT();
+  if (!D || !D.tt) return ttToggle() + notyet(D && D.ttError);
+  if (!ME) return ttToggle() + viewPickMe();
   var t = myDays();
   if (!t) {
-    return '<div class="empty">«' + esc(ME) + '» 을 시간표에서 못 찾았습니다.<br>'
+    return ttToggle() + '<div class="empty">«' + esc(ME) + '» 을 시간표에서 못 찾았습니다.<br>'
       + '이름을 다시 골라 주세요.</div>'
       + '<button class="btn ghost" data-go="me">이름 다시 고르기</button>';
   }
@@ -433,7 +601,7 @@ function viewTT() {
   t.days.forEach(function (dy) { maxP = Math.max(maxP, (dy.periods || []).length); });
   var dow = todayDow();
 
-  var h = '<div class="card"><h2>' + esc(ME) + ' 선생님 · '
+  var h = ttToggle() + '<div class="card"><h2>' + esc(ME) + ' 선생님 · '
     + esc((D.tt.school || '') + ' ' + (D.tt.year || '')) + '</h2>'
     + '<div class="tt-wrap"><table class="tt"><thead><tr><th>교시</th>';
   t.days.forEach(function (dy) {
@@ -481,33 +649,587 @@ function viewPickMe() {
 }
 
 /* ── 급식 ────────────────────────────────────────────── */
+/* 오늘 점심 — 여중·여고 각각. 옛 자료(schools 없음)면 한 학교 */
+function todayMeals() {
+  if (!D || !D.meal) return [];
+  var t = todayStr();
+  var ss = (D.meal.schools && D.meal.schools.length) ? D.meal.schools : [{ short: '', meals: D.meal.meals || [] }];
+  var out = [];
+  ss.forEach(function (s) { (s.meals || []).forEach(function (m) { if (m.date === t) out.push({ short: s.short || '', m: m }); }); });
+  return out;
+}
 function mealOf(date) {
   if (!D || !D.meal) return null;
   var list = D.meal.meals || [];
   for (var i = 0; i < list.length; i++) if (list[i].date === date) return list[i];
   return null;
 }
-function viewMeal() {
-  if (!D || !D.meal) return notyet(D && D.mealError);
-  var list = D.meal.meals || [];
-  if (!list.length) {
-    return '<div class="empty">이번 주는 급식이 없습니다.<br>(방학이거나 아직 안 올라왔습니다)</div>';
+/* ── 급식: 주 넘기기 · 날짜로 가기 · 급식지도 · 날짜/이름 찾기 ──
+   ★ 날짜 읽는 법은 지비스(PC)의 급식 검색과 같다: 10/2 · 2026-10-02 · 20261002 · 이름 */
+var ML = { off: 0, weeks: {}, busy: false, err: '' };   // weeks[off] = 그 주 급식
+var DUTY = null, dutyBusy = false, dutyErr = '';
+var MLQ = '', MLFOCUS = '', MLRES = null;
+function mlPad(n) { return String(n).padStart(2, '0'); }
+function mlIso(y, mo, d) {
+  var dt = new Date(y, mo - 1, d);
+  if (dt.getFullYear() !== y || dt.getMonth() !== mo - 1 || dt.getDate() !== d) return '';
+  return y + '-' + mlPad(mo) + '-' + mlPad(d);
+}
+function mlParseDate(q) {
+  var s = String(q || '').trim(), m;
+  if ((m = s.match(/^(\d{4})\s*[-./년]\s*(\d{1,2})\s*[-./월]\s*(\d{1,2})\s*일?$/))) return mlIso(+m[1], +m[2], +m[3]);
+  if ((m = s.match(/^(\d{4})(\d{2})(\d{2})$/))) return mlIso(+m[1], +m[2], +m[3]);
+  if ((m = s.match(/^(\d{1,2})\s*[-./월]\s*(\d{1,2})\s*일?$/))) {
+    var n = new Date(), sy = n.getMonth() + 1 >= 3 ? n.getFullYear() : n.getFullYear() - 1;   // 해를 안 적으면 지금 학년도(3월~이듬해 2월) 안의 그날
+    return mlIso(+m[1] >= 3 ? sy : sy + 1, +m[1], +m[2]);
   }
-  var today = todayStr();
-  return '<div class="card"><h2>' + esc(D.meal.school) + ' · '
-    + esc(D.meal.from) + ' ~ ' + esc(D.meal.to) + '</h2></div>'
-    + list.map(function (m) {
-      var d = new Date(m.date + 'T00:00:00');
-      return '<div class="card meal"' + (m.date === today
-        ? ' style="border-color:var(--accent);border-width:2px"' : '') + '>'
-        + '<div class="day">' + (d.getMonth() + 1) + '/' + d.getDate()
-        + ' (' + DOWN[d.getDay()] + ')'
-        + (m.date === today ? ' · 오늘' : '')
-        + (m.kcal ? '<em>' + esc(m.kcal) + '</em>' : '') + '</div>'
-        + '<div class="dishes">' + m.dishes.map(function (x) {
-          return '<span>' + esc(x) + '</span>';
-        }).join('') + '</div></div>';
-    }).join('');
+  return '';
+}
+function mlMonday(d) { var x = new Date(d); x.setHours(0, 0, 0, 0); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x; }
+function mlOffOf(iso) {
+  var p = iso.split('-');
+  return Math.round((mlMonday(new Date(+p[0], +p[1] - 1, +p[2])) - mlMonday(new Date())) / (7 * 86400000));
+}
+function mlWeekDates(off) {   // 그 주 월~금 날짜 ['2026-10-05', …]
+  var mon = mlMonday(new Date()); mon.setDate(mon.getDate() + off * 7);
+  var out = [];
+  for (var i = 0; i < 5; i++) { var d = new Date(mon); d.setDate(mon.getDate() + i); out.push(d.getFullYear() + '-' + mlPad(d.getMonth() + 1) + '-' + mlPad(d.getDate())); }
+  return out;
+}
+function mlMd(iso) { var p = iso.split('-'); return (+p[1]) + '/' + (+p[2]); }
+function mlDow(iso) { var p = iso.split('-'); return DOWN[new Date(+p[0], +p[1] - 1, +p[2]).getDay()]; }
+function mlWeekData(off) {
+  if (off === 0 && D && D.meal && !ML.weeks[0]) ML.weeks[0] = D.meal;   // 이번 주는 홈 자료에 이미 있다
+  return ML.weeks[off] || null;
+}
+function loadMealWeek(off) {
+  if (ML.busy) return;
+  ML.busy = true; ML.err = '';
+  bridgeGet('meal', '&week=' + off).then(function (j) {
+    ML.busy = false;
+    if (j.meal) ML.weeks[off] = j.meal; else ML.err = j.mealError || '급식을 받지 못했습니다';
+    if (VIEW === 'meal') draw();
+  }).catch(function (e) { ML.busy = false; ML.err = '못 받았습니다 — ' + ((e && e.message) || e); if (VIEW === 'meal') draw(); });
+}
+function loadDuty() {
+  if (dutyBusy) return;
+  dutyBusy = true; dutyErr = '';
+  bridgeGet('duty').then(function (j) {
+    dutyBusy = false; DUTY = j.duty || null;
+    if (!DUTY) dutyErr = j.dutyError || '급식지도 순서표를 받지 못했습니다';
+    else if (DUTY.error) { dutyErr = DUTY.error; }
+    if (VIEW === 'meal') draw();
+  }).catch(function (e) { dutyBusy = false; dutyErr = '못 받았습니다 — ' + ((e && e.message) || e); if (VIEW === 'meal') draw(); });
+}
+function dutyOf(iso) { return (DUTY && DUTY.days && DUTY.days[iso]) || null; }
+
+function mlGo(iso) {   // 그 날이 든 주로 가서 그날을 강조한다
+  MLFOCUS = iso; ML.off = mlOffOf(iso); draw();
+  setTimeout(function () { var el = document.querySelector('.meal.focus'); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }, 120);
+}
+function mlWeek(delta) { ML.off = delta === 0 ? 0 : ML.off + delta; MLFOCUS = ''; draw(); window.scrollTo(0, 0); }
+function mlSearch() {
+  MLFOCUS = ''; MLRES = null;
+  var q = String(MLQ || '').trim();
+  if (!q) { draw(); return; }
+  var iso = mlParseDate(q);
+  if (iso) { MLRES = { kind: 'date', iso: iso }; mlGo(iso); return; }
+  MLRES = { kind: 'name', q: q };
+  draw();
+}
+function mlFindHtml() {
+  if (!MLRES) return '';
+  if (MLRES.kind === 'date') {
+    var g = dutyOf(MLRES.iso);
+    return '<div class="mlfind"><b>' + mlMd(MLRES.iso) + ' (' + mlDow(MLRES.iso) + ')</b> 급식지도 '
+      + (g && g.name ? '<b class="nm">' + esc(g.name) + '</b>' + (g.note ? ' <small>' + esc(g.note) + '</small>' : '')
+        : (g && g.note ? '<span>' + esc(g.note) + '</span>' : '<span>정보 없음</span>')) + '</div>';
+  }
+  var q = MLRES.q;
+  if (!DUTY || !DUTY.days) {
+    return '<div class="mlfind bad">' + (dutyBusy ? '급식지도 순서표를 불러오는 중입니다…' : '급식지도 순서표를 아직 못 불러와서 이름으로는 찾을 수 없습니다' + (dutyErr ? ' — ' + esc(dutyErr) : '')) + '</div>';
+  }
+  var keys = Object.keys(DUTY.days).filter(function (k) { return String(DUTY.days[k].name || '').indexOf(q) >= 0; }).sort();
+  if (!keys.length) return '<div class="mlfind bad">순서표에 «' + esc(q) + '» 이(가) 든 이름이 없습니다</div>';
+  var today = todayStr(), who = {};
+  keys.forEach(function (k) { who[DUTY.days[k].name] = 1; });
+  var names = Object.keys(who), multi = names.length > 1;
+  var left = keys.filter(function (k) { return k >= today; }).length;
+  return '<div class="mlfind"><b class="nm">' + esc(multi ? '«' + q + '» ' + names.length + '명' : names[0]) + '</b> 급식지도 '
+    + keys.length + '번 <small>(남은 ' + left + '번 · 누르면 그 주 급식)</small>'
+    + '<div class="mlgos">' + keys.slice(0, 80).map(function (k) {
+      return '<button type="button" class="chip mlgo' + (k < today ? ' past' : '') + (k === MLFOCUS ? ' on' : '') + '" data-mlgo="' + k + '">'
+        + mlMd(k) + '<small>(' + esc(DUTY.days[k].dow || mlDow(k)) + ')</small>' + (multi ? ' <i>' + esc(DUTY.days[k].name) + '</i>' : '') + (k === today ? ' <u>오늘</u>' : '') + '</button>';
+    }).join('') + '</div></div>';
+}
+function viewMeal() {
+  if (!DUTY && !dutyBusy && !dutyErr) loadDuty();
+  var off = ML.off, wk = mlWeekData(off);
+  if (!wk && !ML.busy && !ML.err) loadMealWeek(off);
+  var dates = mlWeekDates(off), today = todayStr();
+  var h = '<div class="mlsbox"><div class="mlsbt">' + lineIc('search') + ' 급식 찾기<small>날짜(10/2 · 2026-10-02) 또는 교사 이름</small></div>'
+    + '<div class="mlrow"><input class="fld" id="mlQ" autocomplete="off" placeholder="예) 10/2   또는   김진호" value="' + esc(MLQ) + '">'
+    + '<button type="button" class="btn sm" id="mlFind">검색</button>'
+    + (MLQ ? '<button type="button" class="btn ghost sm" id="mlX" aria-label="검색 지우기">✕</button>' : '') + '</div>' + mlFindHtml() + '</div>';
+  h += '<div class="mlnav"><button type="button" class="btn ghost sm" data-mlwk="-1">‹ 이전 주</button>'
+    + '<button type="button" class="btn ghost sm' + (off === 0 ? ' on' : '') + '" data-mlwk="0">이번 주</button>'
+    + '<button type="button" class="btn ghost sm" data-mlwk="1">다음 주 ›</button></div>'
+    + '<div class="mlnav"><label class="mldate">날짜로 이동 <input type="date" id="mlDate" value="' + esc(MLFOCUS || dates[0]) + '"></label></div>';
+  h += '<div class="mlweek">' + mlMd(dates[0]) + ' ~ ' + mlMd(dates[4]) + (off === 0 ? ' · 이번 주' : (off > 0 ? ' · ' + off + '주 뒤' : ' · ' + (-off) + '주 전')) + '</div>';
+  if (!wk) return h + (ML.err ? '<div class="empty">' + esc(ML.err) + '</div><button class="btn ghost" data-mlretry="1">다시 받기</button>' : '<div class="spin">급식을 불러오는 중…</div>');
+  var schools = (wk.schools && wk.schools.length) ? wk.schools : [{ name: wk.school || '', short: '', meals: wk.meals || [] }];
+  var byS = schools.map(function (s) { var m = {}; (s.meals || []).forEach(function (x) { m[x.date] = x; }); return m; });
+  var any = schools.some(function (s) { return (s.meals || []).length; });
+  h += dates.map(function (iso) {
+    var g = dutyOf(iso), got = byS.map(function (m) { return m[iso]; });
+    var cls = 'card meal' + (iso === today ? ' today' : '') + (iso === MLFOCUS ? ' focus' : '');
+    var head = '<div class="day">' + mlMd(iso) + ' (' + mlDow(iso) + ')' + (iso === today ? ' · 오늘' : '') + '</div>';
+    var duty = g ? '<div class="duty">' + (g.name ? '급식지도 <b>' + esc(g.name) + '</b>' + (g.note ? ' <small>' + esc(g.note) + '</small>' : '') : '<small>' + esc(g.note || '') + '</small>') + '</div>' : '';
+    if (!got.some(Boolean)) return '<div class="' + cls + ' none">' + head + '<div class="muted">점심이 없는 날입니다</div>' + duty + '</div>';
+    return '<div class="' + cls + '">' + head + schools.map(function (s, i) {
+      var m = got[i];
+      var lab = '<div class="sch"><b>' + esc(s.short || s.name) + '</b>' + (m && m.kcal ? '<em>' + esc(m.kcal) + '</em>' : '') + (s.error ? '<small class="bad">못 받았습니다</small>' : '') + '</div>';
+      return '<div class="sblk">' + lab + (m ? '<div class="dishes">' + m.dishes.map(function (x) { return '<span>' + esc(x) + '</span>'; }).join('') + '</div>' : '<div class="muted none1">점심 없음</div>') + '</div>';
+    }).join('') + duty + '</div>';
+  }).join('');
+  if (!any) h += '<div class="muted" style="text-align:center;margin-top:6px">이 주에는 올라온 급식이 없습니다 (방학이거나 아직 안 올라왔습니다)</div>';
+  return h;
+}
+
+/* ── 출결 ────────────────────────────────────────────────
+   ★ 담임 확인: 시간표에서 고른 «내 이름»(컴시간 교사 번호 + 가린 이름) 으로 다리에 묻는다.
+     역할표(출결 다리)가 «담임이면 제 반만, 학년부장·교무부장은 확인번호로» 허락하고, 아니면 «담임 아님» 이다.
+   ★ 학생 정보라 폰에 남기지 않는다 — 메모리에만 두고(LS 에 안 씀) 화면을 닫으면 사라진다. 확인번호만 이 폰에 기억한다. */
+var ATT = { st: 'idle', me: null, err: '', code: LS.get('attcode', ''), cls: '', rows: null, types: [], at: '', month: '',
+  roster: null, rosterBusy: false, form: null, last: null, msg: '', busy: false };
+function attWho() {
+  if (!D || !D.tt || !ME) return null;
+  var t = (D.tt.byTeacher || []).filter(function (x) { return x.name === ME; })[0];
+  return t ? { no: t.i, mask: t.name } : null;
+}
+function attApi(act, extra) {
+  var w = attWho();
+  if (!w) return Promise.resolve({ ok: false, code: 'nowho', msg: '먼저 시간표에서 «내 이름» 을 골라 주세요' });
+  return bridgeGet('att', '&act=' + act + '&no=' + w.no + '&mask=' + encodeURIComponent(w.mask)
+    + '&code=' + encodeURIComponent(ATT.code || '') + (extra || '')).then(function (j) {
+    return j.att || { ok: false, msg: j.attError || '못 받았습니다' };
+  });
+}
+function attReset() { ATT.st = 'idle'; ATT.me = null; ATT.err = ''; ATT.rows = null; ATT.roster = null; ATT.form = null; ATT.last = null; ATT.msg = ''; }
+function attRedraw() { if (VIEW === 'att' || VIEW === 'sms') draw(); }
+function attLoadMe() {
+  if (ATT.busy) return;
+  if (!attWho()) { ATT.st = 'nowho'; return; }
+  ATT.busy = true; ATT.st = 'me'; ATT.err = '';
+  attApi('me').then(function (r) {
+    ATT.busy = false;
+    if (r.ok) { ATT.me = r.me; ATT.cls = (r.me.view.indexOf(r.me.cls) >= 0 ? r.me.cls : r.me.view[0]) || ''; ATT.st = ATT.cls ? 'ok' : 'nocls'; if (ATT.cls) attLoadList(); }
+    else if (r.code === 'notmine') ATT.st = 'notmine';
+    else if (r.code === 'badcode') { ATT.st = 'needcode'; ATT.err = ATT.code ? r.msg : ''; }
+    else { ATT.st = 'err'; ATT.err = r.msg || '못 받았습니다'; }
+    attRedraw();
+  }).catch(function (e) { ATT.busy = false; ATT.st = 'err'; ATT.err = '못 받았습니다 — ' + ((e && e.message) || e); attRedraw(); });
+}
+function attLoadList() {
+  ATT.rows = null; ATT.listErr = '';
+  attApi('list', '&cls=' + encodeURIComponent(ATT.cls)).then(function (r) {
+    if (r.ok) {
+      ATT.rows = r.rows || []; ATT.types = r.types || []; ATT.at = r.at || '';
+      var months = {}; ATT.rows.forEach(function (x) { if (x.start) months[x.start.slice(0, 7)] = 1; });
+      var keys = Object.keys(months).sort(), cur = todayStr().slice(0, 7);
+      ATT.month = keys.indexOf(ATT.month) >= 0 ? ATT.month : (keys.indexOf(cur) >= 0 ? cur : (keys[keys.length - 1] || ''));
+    } else ATT.listErr = r.msg || '목록을 받지 못했습니다';
+    attRedraw();
+  }).catch(function (e) { ATT.listErr = '못 받았습니다 — ' + ((e && e.message) || e); attRedraw(); });
+}
+function attLoadRoster() {
+  if (ATT.roster || ATT.rosterBusy) return;
+  ATT.rosterBusy = true;
+  attApi('roster', '&cls=' + encodeURIComponent(ATT.cls)).then(function (r) {
+    ATT.rosterBusy = false;
+    if (r.ok) ATT.roster = r.students || []; else ATT.msg = r.msg || '학생 명단을 받지 못했습니다';
+    attRedraw();
+  }).catch(function (e) { ATT.rosterBusy = false; ATT.msg = '못 받았습니다 — ' + ((e && e.message) || e); attRedraw(); });
+}
+function attNewForm() {
+  return { step: 'edit', id: '', name: '', type: '', date: todayStr(), time: '', end: '', reason: '', more: false };
+}
+function attFmtMD(iso) { var p = String(iso || '').split('-'); return p.length === 3 ? (+p[1]) + '/' + (+p[2]) : String(iso || ''); }
+function attDow(iso) { var p = String(iso || '').split('-'); return p.length === 3 ? DOWN[new Date(+p[0], +p[1] - 1, +p[2]).getDay()] : ''; }
+
+function viewAtt() {
+  var h = '';
+  if (!attWho()) {
+    return '<div class="card"><h2>출결</h2><p class="muted" style="margin:0 0 12px">출결은 «담임 선생님» 만 볼 수 있습니다.<br>컴시간 시간표의 «내 이름» 으로 담임을 확인합니다. 먼저 이름을 골라 주세요.</p>'
+      + '<button class="btn" data-go="me">내 이름 고르기</button></div>';
+  }
+  if (ATT.st === 'idle') { attLoadMe(); return '<div class="spin">담임 확인 중…</div>'; }
+  if (ATT.st === 'me') return '<div class="spin">담임 확인 중…</div>';
+  if (ATT.st === 'notmine') {
+    return '<div class="card att-no"><div class="att-no-ic">' + lineIc('att') + '</div><h3>담임교사가 아닙니다</h3>'
+      + '<p class="muted">컴시간 시간표의 «' + esc(ME) + '» 선생님은 담임으로 등록되어 있지 않아 출결을 볼 수 없습니다.</p>'
+      + '<p class="muted" style="font-size:12.5px">이름을 잘못 골랐다면 아래에서 다시 골라 주세요. 담임인데도 이 화면이 나오면 김진호 선생님께 알려 주세요.</p>'
+      + '<button class="btn ghost" data-go="me">내 이름 다시 고르기</button></div>';
+  }
+  if (ATT.st === 'needcode') {
+    return '<div class="card"><h2>확인번호</h2><p class="muted" style="margin:0 0 10px">«' + esc(ME) + '» 선생님은 학년 전체·전교 출결을 보는 역할이라 <b>확인번호</b>가 필요합니다.</p>'
+      + (ATT.err ? '<div class="atwarn">' + esc(ATT.err) + '</div>' : '')
+      + '<div class="mlrow"><input class="fld" id="attCode" type="password" inputmode="numeric" autocomplete="off" placeholder="확인번호" value="">'
+      + '<button type="button" class="btn sm" id="attCodeGo">확인</button></div></div>';
+  }
+  if (ATT.st === 'err') return '<div class="empty">' + esc(ATT.err) + '</div><button class="btn ghost" data-attretry="1">다시 해 보기</button>';
+  if (ATT.st === 'nocls') return '<div class="empty">볼 수 있는 반이 없습니다.</div>';
+  /* ── 열림 ── */
+  var me = ATT.me, canWrite = me.write.indexOf(ATT.cls) >= 0;
+  h += '<div class="card att-me"><b>' + esc(me.name) + '</b> 선생님 <span class="chipx">' + esc(me.title || (me.role === 'hr' ? '담임' : me.role === 'head' ? '학년부장' : '보기')) + '</span>'
+    + '<small>' + (me.role === 'hr' ? esc(me.cls) + ' 담임 — 우리 반 출결을 보고 적습니다' : (canWrite ? esc(me.cls) + ' 담임 · ' : '') + '볼 수 있는 반 ' + me.view.length + '개') + '</small></div>';
+  if (me.view.length > 1) {
+    h += '<div class="chips" style="margin-bottom:10px">' + me.view.map(function (c) {
+      return '<button type="button" class="chip' + (c === ATT.cls ? ' on' : '') + '" data-attcls="' + esc(c) + '">' + esc(c) + '</button>';
+    }).join('') + '</div>';
+  }
+  if (ATT.listErr) return h + '<div class="empty">' + esc(ATT.listErr) + '</div><button class="btn ghost" data-attretry="2">다시 받기</button>';
+  if (!ATT.rows) return h + '<div class="spin">' + esc(ATT.cls) + ' 출결을 불러오는 중…</div>';
+  if (canWrite) h += attFormHtml();
+  /* 달 칩 + 목록 */
+  var months = {}; ATT.rows.forEach(function (x) { if (x.start) months[x.start.slice(0, 7)] = (months[x.start.slice(0, 7)] || 0) + 1; });
+  var mk = Object.keys(months).sort();
+  if (!mk.length) return h + '<div class="empty">' + esc(ATT.cls) + ' 출결 기록이 아직 없습니다.</div>';
+  h += '<div class="chips" style="margin:6px 0 10px">' + mk.map(function (k) {
+    return '<button type="button" class="chip' + (k === ATT.month ? ' on' : '') + '" data-attmon="' + k + '">' + (+k.slice(5)) + '월 <small>' + months[k] + '</small></button>';
+  }).join('') + '</div>';
+  var rows = ATT.rows.filter(function (x) { return x.start && x.start.slice(0, 7) === ATT.month; })
+    .sort(function (a, b) { return a.start < b.start ? 1 : a.start > b.start ? -1 : (a.id < b.id ? -1 : 1); });
+  var cnt = {}; rows.forEach(function (x) { var t = String(x.type || '').slice(2) || x.type; cnt[t] = (cnt[t] || 0) + 1; });
+  h += '<div class="att-sum">' + (+ATT.month.slice(5)) + '월 ' + rows.length + '건' + Object.keys(cnt).map(function (k) { return ' · ' + esc(k) + ' ' + cnt[k]; }).join('') + '</div>';
+  var day = '';
+  h += rows.map(function (x) {
+    var head = '';
+    if (x.start !== day) { day = x.start; head = '<div class="att-day">' + attFmtMD(x.start) + ' (' + attDow(x.start) + ')</div>'; }
+    return head + '<div class="att-row"><div class="att-who"><b>' + esc(x.name) + '</b><small>' + esc(x.id) + '</small></div>'
+      + '<div class="att-body"><div><span class="att-type ' + (/^인정/.test(x.type) ? 'rec' : /^질병/.test(x.type) ? 'ill' : 'etc') + '">' + esc(x.type) + '</span>'
+      + (x.time ? ' <small>' + esc(x.time) + '</small>' : '') + (x.end ? ' <small>~ ' + esc(x.end) + '</small>' : '') + '</div>'
+      + (x.reason ? '<div class="att-rs">' + esc(x.reason) + '</div>' : '')
+      + '<div class="att-tags">' + (x.gubun ? '<span class="tg g">' + esc(x.gubun) + '</span>' : '')
+      + (x.doc === true ? '<span class="tg ok">서류 확인</span>' : '') + (x.neis === true ? '<span class="tg ok">NEIS</span>' : '') + '</div></div></div>';
+  }).join('');
+  return h;
+}
+function attFormHtml() {
+  var f = ATT.form;
+  if (!f) {
+    var last = ATT.last ? '<div class="att-ok">✓ ' + esc(ATT.last.text) + '<button type="button" class="btn ghost sm" data-attundo="1">방금 넣은 것 취소</button></div>' : '';
+    return last + (ATT.msg ? '<div class="atwarn">' + esc(ATT.msg) + '</div>' : '') + '<button type="button" class="btn att-new" data-attnew="1">＋ 새 출결 적기</button>';
+  }
+  if (!ATT.roster) { attLoadRoster(); return '<div class="card"><h2>새 출결 적기</h2><div class="spin" style="padding:20px 0">우리 반 학생 명단을 불러오는 중…</div></div>'; }
+  if (f.step === 'confirm') {
+    return '<div class="card att-form"><h2>이대로 저장할까요?</h2><div class="att-conf">'
+      + '<div><span>학생</span><b>' + esc(f.id) + ' ' + esc(f.name) + '</b></div>'
+      + '<div><span>유형</span><b>' + esc(f.type) + '</b></div>'
+      + '<div><span>일자</span><b>' + attFmtMD(f.date) + ' (' + attDow(f.date) + ')' + (f.time ? ' ' + esc(f.time) : '') + (f.end ? ' ~ ' + esc(f.end) : '') + '</b></div>'
+      + '<div><span>사유</span><b>' + esc(f.reason) + '</b></div></div>'
+      + '<p class="muted" style="font-size:12.5px;margin:8px 0">«입력» 시트 맨 아래에 한 줄이 들어가고, 교사확인에는 선생님 실명이 적힙니다.</p>'
+      + (ATT.msg ? '<div class="atwarn">' + esc(ATT.msg) + '</div>' : '')
+      + '<div class="mlrow"><button type="button" class="btn ghost sm" data-attstep="edit">‹ 고치기</button><button type="button" class="btn" id="attSave"' + (ATT.busy ? ' disabled' : '') + '>' + (ATT.busy ? '저장 중…' : '저장') + '</button></div></div>';
+  }
+  var types = (ATT.types && ATT.types.length ? ATT.types : ['질병결석', '질병지각', '질병조퇴', '질병결과', '인정결석', '인정지각', '인정조퇴', '인정결과', '보건실', '상담실', '외출']);
+  return '<div class="card att-form"><h2>새 출결 적기 <small>' + esc(ATT.cls) + '</small></h2>'
+    + '<div class="att-lab">학생</div><div class="chips att-stu">' + ATT.roster.map(function (s) {
+      return '<button type="button" class="chip' + (s.id === f.id ? ' on' : '') + '" data-attstu="' + esc(s.id) + '">' + s.no + ' ' + esc(s.name) + '</button>';
+    }).join('') + '</div>'
+    + '<div class="att-lab">유형</div><div class="chips">' + types.map(function (t) {
+      return '<button type="button" class="chip' + (t === f.type ? ' on' : '') + '" data-atttype="' + esc(t) + '">' + esc(t) + '</button>';
+    }).join('') + '</div>'
+    + '<div class="att-lab">일자</div><input class="fld" type="date" id="attDate" value="' + esc(f.date) + '">'
+    + '<div class="att-lab">신청사유</div><input class="fld" id="attReason" placeholder="예) 감기 증상으로 병원 진료" autocomplete="off" value="' + esc(f.reason) + '">'
+    + (f.more ? '<div class="mlrow" style="margin-top:8px"><input class="fld" id="attTime" placeholder="시간 (예 13:00)" value="' + esc(f.time) + '"><input class="fld" id="attEnd" placeholder="종료일 (예 2026-10-08)" value="' + esc(f.end) + '"></div>'
+      : '<button type="button" class="btn ghost sm" style="margin-top:8px" data-attmore="1">시간·종료일 더 적기</button>')
+    + (ATT.msg ? '<div class="atwarn">' + esc(ATT.msg) + '</div>' : '')
+    + '<div class="mlrow" style="margin-top:12px"><button type="button" class="btn ghost sm" data-attclose="1">취소</button><button type="button" class="btn" id="attNext">확인하기 ›</button></div></div>';
+}
+function attNext() {
+  var f = ATT.form; ATT.msg = '';
+  if (!f.id) ATT.msg = '학생을 골라 주세요';
+  else if (!f.type) ATT.msg = '유형을 골라 주세요';
+  else if (!/^\d{4}-\d{2}-\d{2}$/.test(f.date)) ATT.msg = '일자를 골라 주세요';
+  else if (!String(f.reason).trim()) ATT.msg = '신청사유를 적어 주세요';
+  else if (f.time && !/^\d{1,2}:\d{2}$/.test(f.time)) ATT.msg = '시간은 13:00 꼴로 적어 주세요';
+  else f.step = 'confirm';
+  draw();
+}
+function attSave() {
+  var f = ATT.form; if (!f || ATT.busy) return;
+  if (!f.nonce) f.nonce = 'ph' + Date.now() + Math.random().toString(36).slice(2, 7);   // 답이 길에서 사라져 다시 눌러도 한 줄만 들어가게
+  ATT.busy = true; ATT.msg = ''; draw();
+  attApi('add', '&cls=' + encodeURIComponent(ATT.cls) + '&nonce=' + encodeURIComponent(f.nonce) + '&id=' + encodeURIComponent(f.id) + '&name=' + encodeURIComponent(f.name)
+    + '&date=' + encodeURIComponent(f.date) + '&time=' + encodeURIComponent(f.time) + '&end=' + encodeURIComponent(f.end)
+    + '&type=' + encodeURIComponent(f.type) + '&reason=' + encodeURIComponent(f.reason.trim())).then(function (r) {
+    ATT.busy = false;
+    if (r.ok) {
+      ATT.last = { row: r.row, id: f.id, date: f.date, type: f.type, reason: f.reason.trim(), text: f.name + ' ' + attFmtMD(f.date) + ' ' + f.type + ' — 저장했습니다' };
+      ATT.form = null; attLoadList();
+    } else ATT.msg = r.msg || '저장하지 못했습니다';
+    attRedraw();
+  }).catch(function (e) { ATT.busy = false; ATT.msg = '못 보냈습니다 — ' + ((e && e.message) || e) + ' (다시 눌러도 한 줄만 들어갑니다)'; attRedraw(); });
+}
+function attUndo() {
+  var l = ATT.last; if (!l || ATT.busy) return;
+  ATT.busy = true; ATT.msg = '';
+  attApi('undo', '&cls=' + encodeURIComponent(ATT.cls) + '&row=' + (l.row || 0) + '&id=' + encodeURIComponent(l.id) + '&date=' + encodeURIComponent(l.date)
+    + '&type=' + encodeURIComponent(l.type) + '&reason=' + encodeURIComponent(l.reason)).then(function (r) {
+    ATT.busy = false;
+    if (r.ok) { ATT.last = null; ATT.msg = ''; attLoadList(); } else ATT.msg = r.msg || '취소하지 못했습니다';
+    attRedraw();
+  }).catch(function (e) { ATT.busy = false; ATT.msg = '못 보냈습니다 — ' + ((e && e.message) || e); attRedraw(); });
+}
+
+/* ── 문자 문구 ───────────────────────────────────────────
+   ★ 문구·연락처는 «이 폰»(localStorage) 에만 둔다 — 서버로 안 올린다. 폰을 잃어버려도 새지 않게 화면 잠금을 켜 두는 것이 좋다.
+   ★ 문자를 앱이 대신 보내지 않는다. 문자 앱을 «문구가 채워진 채» 열어 줄 뿐이고, 보내기는 선생님이 누른다. 한 사람씩 보낸다.
+   ★ 주소: 안드로이드 sms:번호?body=…  /  아이폰 sms:번호&body=… */
+var SMS = { target: '학생', tag: '', draft: '', draftTitle: '', draftFor: '', note: '', tmpCon: null, tmpTel: '', tab: 'tpl', cat: '전체', tpls: null, cons: null, sel: '', who: '', num: '', body: '', edit: null, cedit: null, q: '', confirm: '', msg: '', paste: null };
+var SMS_DEFAULT = [
+  { id: 's1', title: '생리통결석', cat: '학생', body: '{이름}아, 안녕하세요. 알겠습니다.\n출결신고서비스 부탁드리겠습니다.\n사유는 극심한 생리통 증상으로 가정에서 휴식을 취함으로 부탁드립니다.\n출결신고서비스 하시고 연락주시면 바로 확인하겠습니다.' },
+  { id: 's2', title: '질병지각', cat: '학생', body: '{이름}아, 안녕하세요. 질병지각 확인했습니다.\n사유는 질병(몸이 좋지 않음)으로 부탁드립니다.\n출결신고서비스 하시고 연락주시면 바로 확인하겠습니다.' },
+  { id: 's3', title: '병조퇴', cat: '학생', body: '{이름}아, 안녕하세요. 조퇴 확인했습니다.\n사유는 질병으로 귀가하여 휴식을 취함으로 부탁드립니다.\n출결신고서비스 하시고 연락주시면 바로 확인하겠습니다.' },
+  { id: 's4', title: '전화부탁', cat: '학생', body: '{이름}아, 안녕하세요. {반} 담임 {선생님}입니다.\n확인할 것이 있어요. 시간 될 때 전화 부탁드립니다.' },
+  { id: 's5', title: '질병결석', cat: '학생', body: '{이름}아, 안녕하세요. 알겠습니다.\n출결신고서비스 부탁드리겠습니다.\n사유는 질병(몸이 좋지 않아 가정에서 휴식)으로 부탁드립니다.\n출결신고서비스 하시고 연락주시면 바로 확인하겠습니다.' },
+  { id: 'p1', title: '질병결석', cat: '학부모', body: '{성명} 학생 어머님, 안녕하세요. {반} 담임 {선생님}입니다.\n오늘({날짜}) {이름}이가 몸이 좋지 않아 결석했음을 확인했습니다.\n출결신고서비스로 신청해 주시면 바로 확인하겠습니다.' },
+  { id: 'p2', title: '조퇴 안내', cat: '학부모', body: '{성명} 학생 어머님, 안녕하세요. {반} 담임 {선생님}입니다.\n오늘({날짜}) {이름}이가 몸이 좋지 않아 조퇴했음을 알려 드립니다.\n귀가 후 상태를 살펴 주시면 감사하겠습니다.' },
+  { id: 'p3', title: '결석 확인', cat: '학부모', body: '{성명} 학생이 오늘({날짜}) 등교하지 않아 연락드립니다.\n사유를 알려 주시면 감사하겠습니다.\n{반} 담임 {선생님}' },
+  { id: 'p4', title: '상담 일정', cat: '학부모', body: '학부모님, 안녕하세요. {반} 담임 {선생님}입니다.\n{이름}이 상담 일정을 안내드립니다.\n편하신 시간을 알려 주세요.' }
+];
+function smsLoad() {
+  if (SMS.tpls) return;
+  try { var t = JSON.parse(LS.get('smsTpl', 'null')); SMS.tpls = Array.isArray(t) ? t : null; } catch (e) { SMS.tpls = null; }
+  if (!SMS.tpls) SMS.tpls = SMS_DEFAULT.map(function (x) { return Object.assign({}, x); });
+  try { var c = JSON.parse(LS.get('smsCon', 'null')); SMS.cons = (c && typeof c === 'object' && !Array.isArray(c)) ? c : {}; } catch (e) { SMS.cons = {}; }
+}
+function smsSave() { LS.set('smsTpl', JSON.stringify(SMS.tpls)); LS.set('smsCon', JSON.stringify(SMS.cons)); }
+function smsIsIos() { return /iPhone|iPad|iPod/i.test(navigator.userAgent || ''); }
+function smsTel(s) { return String(s || '').replace(/[^\d+]/g, ''); }
+function smsOkTel(s) { var d = smsTel(s).replace(/^\+82/, '0'); return /^0\d{8,10}$/.test(d); }
+function smsFmtTel(s) { var d = smsTel(s).replace(/^\+82/, '0'); if (/^010\d{8}$/.test(d)) return d.slice(0, 3) + '-' + d.slice(3, 7) + '-' + d.slice(7); return String(s || '').trim(); }
+function smsDateTxt() { var d = new Date(); return (d.getMonth() + 1) + '월 ' + d.getDate() + '일(' + DOWN[d.getDay()] + ')'; }
+function smsClsTxt(c) { var m = String(c || '').match(/^(\d)-(\d+)$/); return m ? m[1] + '학년 ' + m[2] + '반' : ''; }
+/* 이름에서 «성» 을 뗀 이름 — 강재은 → 재은. 두 글자 이름(이준)은 한 글자(준), 복성(남궁·황보 등)은 두 글자를 뗀다 */
+var SMS_BOKSUNG = ['남궁', '황보', '제갈', '사공', '선우', '서문', '독고', '동방', '어금', '망절', '소봉', '장곡', '황목', '탁발'];
+function smsGiven(name) {
+  var n = String(name || '').trim();
+  if (n.length >= 4 && SMS_BOKSUNG.indexOf(n.slice(0, 2)) >= 0) return n.slice(2);
+  return n.length >= 2 ? n.slice(1) : n;
+}
+/* 자리표 채우기 — {이름}=성 뺀 이름 · {성명}=전체 이름 · {날짜} · {반} · {선생님} */
+function smsFill(body, con) {
+  var teacher = (ATT && ATT.me && ATT.me.name) || ME || '';
+  return String(body || '').replace(/\{이름\}/g, con ? smsGiven(con.name) : '{이름}').replace(/\{성명\}/g, con ? con.name : '{성명}')
+    .replace(/\{날짜\}/g, smsDateTxt()).replace(/\{반\}/g, (con && smsClsTxt(con.cls)) || '{반}').replace(/\{선생님\}/g, teacher || '{선생님}');
+}
+function smsSorted() {
+  return Object.keys(SMS.cons).map(function (k) { return Object.assign({ k: k }, SMS.cons[k]); })
+    .sort(function (a, b) { return (a.cls || '~').localeCompare(b.cls || '~') || ((a.no || 99) - (b.no || 99)) || a.name.localeCompare(b.name); });
+}
+function smsNumsOf(c) {
+  var out = [];
+  if (smsOkTel(c.p1)) out.push(['p1', '학부모', c.p1]);
+  if (smsOkTel(c.p2)) out.push(['p2', '학부모2', c.p2]);
+  if (smsOkTel(c.s)) out.push(['s', '학생', c.s]);
+  if (String(c.tag || '').trim()) out.push(['tag', '연락처에서 찾기', String(c.tag).trim()]);   // 번호 대신 «태그(검색 이름)» 만 저장
+  return out;
+}
+function smsUri(tel, body) {
+  var b = encodeURIComponent(body), t = smsTel(tel);
+  return 'sms:' + t + (smsIsIos() ? '&' : '?') + 'body=' + b;
+}
+
+function smsCurCon() { return SMS.who ? SMS.cons[SMS.who] : (SMS.tmpCon || null); }
+function smsActive() {
+  var tags = SMS.tpls.filter(function (t) { return t.cat === SMS.target; });
+  var a = tags.filter(function (t) { return t.id === SMS.tag; })[0] || tags[0] || null;
+  if (a && SMS.draftFor !== a.id) { SMS.tag = a.id; SMS.draftFor = a.id; SMS.draft = a.body; SMS.draftTitle = a.title; }
+  if (!a) { SMS.tag = ''; SMS.draftFor = ''; }
+  return a;
+}
+function smsDefNum(con) {   // 발송 대상에 맞는 번호를 먼저 고른다 — 학생이면 학생 번호, 학부모면 학부모 번호
+  var ns = smsNumsOf(con), want = SMS.target === '학생' ? ['s', 'p1', 'p2'] : ['p1', 'p2', 's'];
+  for (var i = 0; i < want.length; i++) { if (ns.filter(function (n) { return n[0] === want[i]; })[0]) return want[i]; }
+  return ns.length ? ns[0][0] : '';
+}
+function viewSms() {
+  smsLoad();
+  if (ATT.st === 'idle' && attWho() && !ATT.busy) attLoadMe();
+  var h = '<div class="seg2"><button type="button" class="chip' + (SMS.tab === 'tpl' ? ' on' : '') + '" data-smstab="tpl">문자 보내기</button>'
+    + '<button type="button" class="chip' + (SMS.tab === 'con' ? ' on' : '') + '" data-smstab="con">연락처 <small>' + Object.keys(SMS.cons).length + '</small></button></div>';
+  return h + (SMS.tab === 'con' ? smsConHtml() : smsComposerHtml());
+}
+function smsComposerHtml() {
+  var tg = SMS.target, tags = SMS.tpls.filter(function (t) { return t.cat === tg; }), act = smsActive();
+  var q = SMS.q.trim(), all = smsSorted();
+  var con = smsCurCon(), nums = (con && SMS.who) ? smsNumsOf(con) : [];
+  var myCls = ATT.me && ATT.me.cls && ATT.me.write && ATT.me.write.indexOf(ATT.me.cls) >= 0 ? ATT.me.cls : '';
+  if (myCls && !SMS.rosterList && !SMS.rosterBusy) smsLoadRoster();
+  var h = '<div class="card att-form"><h2>발송 대상</h2><div class="seg2" style="margin-bottom:6px">'
+    + ['학생', '학부모'].map(function (c) { return '<button type="button" class="chip' + (tg === c ? ' on' : '') + '" data-smstarget="' + c + '">' + c + '</button>'; }).join('') + '</div>';
+  /* 받는 사람 */
+  h += '<div class="att-lab">받는 학생</div>'
+    + (myCls ? (SMS.rosterList ? '<div class="chips att-stu">' + SMS.rosterList.map(function (s) {
+        return '<button type="button" class="chip' + (SMS.tmpCon && SMS.tmpCon.id === s.id && !SMS.who ? ' on' : '') + '" data-smsrs="' + esc(s.id) + '">' + s.no + ' ' + esc(s.name) + '</button>';
+      }).join('') + '</div><div class="note2" style="margin-top:4px">우리 반 명단에서 이름만 채웁니다 · 아무것도 저장하지 않습니다</div>' : '<div class="muted" style="font-size:13px">우리 반 명단을 불러오는 중…</div>') : '')
+    + (all.length ? '<div class="att-lab">등록해 둔 연락처</div>'
+      + (all.length > 12 ? '<input class="fld" id="smsQ" placeholder="이름 또는 반(예: 3-2)으로 찾기" value="' + esc(SMS.q) + '" style="margin-bottom:6px">' : '')
+      + '<div class="chips att-stu">' + all.filter(function (c) { return !q || c.name.indexOf(q) >= 0 || (c.cls || '').indexOf(q) >= 0; }).map(function (c) {
+        return '<button type="button" class="chip' + (c.k === SMS.who ? ' on' : '') + (smsNumsOf(c).length ? '' : ' nonum') + '" data-smscon="' + esc(c.k) + '">' + esc(c.name) + (c.cls ? ' <small>' + esc(c.cls) + '</small>' : '') + '</button>';
+      }).join('') + '</div>' : (myCls ? '' : '<div class="muted" style="font-size:13px">우리 반 명단이 없는 선생님은 «연락처» 탭에서 학생을 추가하거나, 이름 없이 문구만 보낼 수 있습니다.</div>'));
+  if (con && SMS.who) {
+    h += '<div class="att-lab">받는 번호</div>' + (nums.length ? '<div class="chips">' + nums.map(function (n) {
+      return '<button type="button" class="chip' + (SMS.num === n[0] ? ' on' : '') + '" data-smsnum="' + n[0] + '">' + n[1] + ' <small>' + esc(n[0] === 'tag' ? n[2] : smsFmtTel(n[2])) + '</small></button>';
+    }).join('') + '</div>' + (SMS.num && SMS.num !== 'tag' && nums.filter(function (n) { return n[0] === SMS.num; })[0] ? '<a class="btn ghost sm callnow" href="tel:' + esc(smsTel(nums.filter(function (n) { return n[0] === SMS.num; })[0][2])) + '">' + lineIc('phone') + ' 이 번호로 바로 전화</a>' : '')
+      : '<div class="muted" style="font-size:13px">«' + esc(con.name) + '» 은 번호가 등록되어 있지 않습니다. 이대로 보내면 받는 사람 없이 문자 앱이 열립니다.</div>');
+  }
+  if (con && SMS.who && SMS.num === 'tag') {
+    var tgt = (nums.filter(function (n) { return n[0] === 'tag'; })[0] || [])[2] || '', canPick = !!(navigator.contacts && navigator.contacts.select);
+    h += '<div class="tagbox"><b>번호는 이 앱에 저장되어 있지 않습니다.</b><div>폰 연락처에서 «<span class="tgt">' + esc(tgt) + '</span>» (이름·태그)로 찾으면 됩니다.</div>'
+      + (SMS.tmpTel ? '<div class="tgok">이번에 고른 번호: ' + esc(smsFmtTel(SMS.tmpTel)) + ' <small>(저장하지 않습니다)</small></div>' : '')
+      + (canPick ? '<button type="button" class="btn ghost sm" data-smspicksend="1">' + lineIc('contact') + ' 폰 연락처에서 고르기</button>' + (SMS.tmpTel ? '<a class="btn ghost sm callnow" href="tel:' + esc(smsTel(SMS.tmpTel)) + '">' + lineIc('phone') + ' 고른 번호로 바로 전화</a>' : '')
+        : '<div class="note2" style="margin-top:4px">«문자 앱으로 보내기»를 누르면 «' + esc(tgt) + '» 가 복사됩니다. 문자 앱의 «받는 사람» 칸에 붙여넣으면 연락처에서 찾아집니다.</div>') + '</div>';
+  }
+  h += '</div>';
+  /* 문구 선택 + 고치기 */
+  h += '<div class="card att-form"><h2>문자 선택 <small>(' + tg + '용)</small></h2><div class="chips">'
+    + tags.map(function (t) { return '<button type="button" class="chip' + (act && t.id === act.id ? ' on' : '') + '" data-smstag="' + esc(t.id) + '">' + esc(t.title) + '</button>'; }).join('')
+    + '<button type="button" class="chip addtag" data-smsaddtag="1">＋ 추가</button></div>';
+  if (!act) {
+    h += '<div class="empty" style="padding:16px 0">' + tg + '용 문구가 없습니다. «＋ 추가»로 만들어 주세요.</div></div>';
+  } else {
+    var dirty = SMS.draft !== act.body || SMS.draftTitle !== act.title, asking = SMS.confirm === 'tdel:' + act.id;
+    h += '<div class="att-lab">태그 이름</div><input class="fld" id="smsTitle" placeholder="예) 질병결석" value="' + esc(SMS.draftTitle) + '">'
+      + '<div class="att-lab">내용 <small>(줄바꿈이 그대로 적용됩니다)</small> <span class="dirty" id="smsDirty"' + (dirty ? '' : ' hidden') + '>● 저장 안 됨</span></div>'
+      + '<textarea class="fld" id="smsDraft" rows="7" placeholder="예) {이름}아, 안녕하세요.&#10;…">' + esc(SMS.draft) + '</textarea>'
+      + '<div class="att-lab">자리표 넣기 <small>(누르면 커서 자리에 들어갑니다)</small></div><div class="chips">'
+      + [['{이름}', '이름(성 뺀)'], ['{성명}', '전체 이름'], ['{날짜}', '날짜'], ['{반}', '반'], ['{선생님}', '선생님']].map(function (v) { return '<button type="button" class="chip" data-smsvar="' + v[0] + '">＋ ' + v[0] + '</button>'; }).join('') + '</div>'
+      + (SMS.note ? '<div class="att-ok" style="margin-top:10px">✓ ' + esc(SMS.note) + '</div>' : '')
+      + (asking ? '<div class="ask">«' + esc(act.title) + '» 문구를 지울까요? <button type="button" class="btn sm" data-smstdel2="' + esc(act.id) + '">지우기</button><button type="button" class="btn ghost sm" data-smsdelx="1">아니요</button></div>'
+        : '<div class="tplact" style="margin-top:10px"><button type="button" class="btn sm" id="smsSaveTpl">변경 내용 저장</button><button type="button" class="btn ghost sm" id="smsResetTpl">초기화</button><button type="button" class="btn ghost sm" data-smstdel="' + esc(act.id) + '">삭제</button></div>')
+      + '</div>';
+  }
+  /* 미리보기 — 쓰는 대로 바로 바뀐다 */
+  h += '<div class="card att-form"><h2>미리보기 <small>' + (con ? esc(con.name) + ' 학생 · 이름은 «' + esc(smsGiven(con.name)) + '»' : '학생을 고르면 이름이 들어갑니다') + '</small></h2>'
+    + '<div class="pv" id="smsPv">' + esc(smsFill(SMS.draft, con)) + '</div>'
+    + (SMS.msg ? '<div class="atwarn">' + esc(SMS.msg) + '</div>' : '')
+    + '<button type="button" class="btn send" id="smsGo" style="margin-top:12px;width:100%">문자 앱으로 보내기 ›</button>'
+    + '<div class="note2">누르면 내 폰의 문자 앱이 문구가 채워진 채 열립니다. «보내기»는 선생님이 직접 누릅니다. 한 사람씩 보냅니다.</div></div>';
+  return h;
+}
+function smsSend() {
+  var con = smsCurCon(), text = smsFill(SMS.draft, con), tel = '', tagCopy = '';
+  if (con && SMS.who) {
+    var ns = smsNumsOf(con), want = SMS.num || smsDefNum(con), pick = ns.filter(function (n) { return n[0] === want; })[0] || ns[0];
+    if (pick && pick[0] === 'tag') { tagCopy = pick[2]; tel = SMS.tmpTel || ''; } else if (pick) tel = pick[2];
+  }
+  if (!text.trim()) { SMS.msg = '보낼 문구가 비어 있습니다'; draw(); return; }
+  if (/\{(이름|성명|날짜|반|선생님)\}/.test(text)) { SMS.msg = '채워지지 않은 자리표(예: {이름})가 남아 있습니다 — 받는 학생을 고르거나 문구를 고쳐 주세요'; draw(); return; }
+  SMS.msg = '';
+  if (tagCopy && !tel) { try { navigator.clipboard.writeText(tagCopy); } catch (e) { /* 복사 못 해도 문자 앱은 열린다 */ } }
+  window.location.href = smsUri(tel, text);
+}
+
+/* 연락처 */
+function smsConHtml() {
+  if (SMS.cedit) return smsConEditHtml();
+  if (SMS.paste) return smsPasteHtml();
+  var all = smsSorted(), h = '';
+  var me = (ATT && ATT.me) || null, myCls = me && me.cls && me.write && me.write.indexOf(me.cls) >= 0 ? me.cls : '';
+  h += '<div class="card"><h2>연락처 등록</h2><p class="muted" style="margin:0 0 10px;font-size:13px">학생·학부모 번호를 이 폰에 등록해 두면, 문구를 보낼 때 <b>받는 사람이 미리 채워집니다.</b> 번호는 이 폰에만 저장됩니다. <b>번호를 저장하기 싫으면</b> «연락처 검색 이름(태그)»만 적어 두세요. 등록하지 않고 «문구» 탭에서 바로 보내도 됩니다.</p>'
+    + '<div class="mlrow">' + (myCls ? '<button type="button" class="btn sm" data-smsroster="1">' + esc(myCls) + ' 명단에서 등록</button>' : '')
+    + '<button type="button" class="btn ghost sm" data-smsadd="1">＋ 직접 추가</button>'
+    + (myCls ? '<button type="button" class="btn ghost sm" data-smspaste="1">붙여넣어 한꺼번에</button>' : '') + '</div>'
+    + (!myCls ? '<div class="note2">담임 선생님은 «출결»에서 쓰는 우리 반 명단으로 등록할 수 있습니다(담임 확인). 그 밖의 선생님은 직접 추가하세요.</div>' : '') + '</div>';
+  if (SMS.rosterList) {
+    h += '<div class="card"><h2>' + esc(SMS.rosterCls) + ' 학생 — 눌러서 번호 등록</h2><div class="chips att-stu">' + SMS.rosterList.map(function (s) {
+      var c = SMS.cons[s.id]; var n = c ? smsNumsOf(c).length : 0;
+      return '<button type="button" class="chip' + (n ? ' on' : '') + '" data-smsro="' + esc(s.id) + '">' + s.no + ' ' + esc(s.name) + (n ? ' <small>✓' + n + '</small>' : '') + '</button>';
+    }).join('') + '</div></div>';
+  }
+  if (SMS.rosterBusy) h += '<div class="spin" style="padding:16px 0">우리 반 명단을 불러오는 중…</div>';
+  if (SMS.msg) h += '<div class="atwarn">' + esc(SMS.msg) + '</div>';
+  h += '<div class="att-lab" style="margin:14px 2px 6px">등록된 연락처 ' + all.length + '명</div>';
+  h += all.length ? all.map(function (c) {
+    var ns = smsNumsOf(c);
+    var calls = ns.filter(function (n) { return n[0] !== 'tag'; });
+    return '<div class="att-row smsrow"><button type="button" class="smsedit" data-smscl="' + esc(c.k) + '"><div class="att-who"><b>' + esc(c.name) + '</b><small>' + esc(c.cls || '직접') + '</small></div>'
+      + '<div class="att-tags">' + (ns.length ? ns.filter(function (n) { return n[0] === 'tag'; }).map(function (n) { return '<span class="tg ok">' + n[1] + '</span>'; }).join('') : '<span class="tg">번호 없음</span>') + '</div></button>'
+      + (calls.length ? '<div class="callbtns">' + calls.map(function (n) { return '<a class="callbtn" href="tel:' + esc(smsTel(n[2])) + '" aria-label="' + esc(c.name + ' ' + n[1] + ' 전화">') + lineIc('phone') + '<span>' + n[1] + '</span></a>'; }).join('') + '</div>' : '')
+      + '</div>';
+  }).join('') : '<div class="empty" style="padding:18px 0">아직 등록된 연락처가 없습니다.</div>';
+  if (all.length) {
+    h += SMS.confirm === 'clear' ? '<div class="ask">등록한 연락처 ' + all.length + '명을 모두 지울까요? <button type="button" class="btn sm" data-smsclear2="1">모두 지우기</button><button type="button" class="btn ghost sm" data-smsdelx="1">아니요</button></div>'
+      : '<button type="button" class="btn ghost sm" style="margin-top:8px" data-smsclear="1">연락처 모두 지우기</button>';
+  }
+  return h + '<div class="note2">연락처는 이 폰에만 저장되고 서버로 올라가지 않습니다. 폰 분실에 대비해 화면 잠금을 켜 두세요.</div>';
+}
+function smsConEditHtml() {
+  var e = SMS.cedit, canPick = !!(navigator.contacts && navigator.contacts.select);
+  var fld = function (id, lab, val) {
+    return '<div class="att-lab">' + lab + '</div><div class="mlrow"><input class="fld" id="' + id + '" type="tel" inputmode="tel" placeholder="010-0000-0000" value="' + esc(val) + '">'
+      + (canPick ? '<button type="button" class="btn ghost sm" data-smspick="' + id + '" aria-label="연락처에서 고르기">' + lineIc('contact') + '</button>' : '') + '</div>';
+  };
+  return '<div class="card att-form"><h2>' + (e.k ? '연락처 고치기' : '연락처 추가') + (e.cls ? ' <small>' + esc(e.cls) + '</small>' : '') + '</h2>'
+    + '<div class="att-lab">학생 이름</div><input class="fld" id="smsCN" placeholder="이름" value="' + esc(e.name) + '"' + (e.locked ? ' readonly' : '') + '>'
+    + (e.locked ? '' : '<div class="att-lab">반 <small>(선택 · 예: 3-2)</small></div><input class="fld" id="smsCC" placeholder="3-2" value="' + esc(e.cls) + '">')
+    + '<div class="tagexp"><b>번호를 앱에 저장하고 싶지 않다면</b> 아래 «연락처 검색 이름(태그)»만 적고 번호 칸은 비워 두세요. 문자를 보낼 때 폰 연락처에서 그 이름으로 받는 사람을 고릅니다.</div>'
+    + '<div class="att-lab">연락처 검색 이름(태그) <small>(선택 · 예: 가온맘, 3-2가온학부모)</small></div><input class="fld" id="smsTag" placeholder="폰 연락처에 저장해 둔 이름이나 태그" value="' + esc(e.tag || '') + '">'
+    + fld('smsP1', '학부모 번호 (저장하지 않으려면 비움)', e.p1) + fld('smsP2', '학부모 번호 2 (선택)', e.p2) + fld('smsS', '학생 번호 (선택)', e.s)
+    + (canPick ? '<div class="note2">오른쪽 단추로 폰 연락처에서 번호를 가져올 수 있습니다(안드로이드).</div>' : '<div class="note2">번호는 직접 입력하세요. 하이픈(-)은 있어도 없어도 됩니다.</div>')
+    + (SMS.msg ? '<div class="atwarn">' + esc(SMS.msg) + '</div>' : '')
+    + (SMS.confirm === 'cdel:' + e.k ? '<div class="ask">이 연락처를 지울까요? <button type="button" class="btn sm" data-smscdel="' + esc(e.k) + '">지우기</button><button type="button" class="btn ghost sm" data-smsdelx="1">아니요</button></div>' : '')
+    + '<div class="mlrow" style="margin-top:12px"><button type="button" class="btn ghost sm" data-smscancel="1">취소</button>'
+    + (e.k ? '<button type="button" class="btn ghost sm" data-smscdel="' + esc(e.k) + '">지우기</button>' : '') + '<button type="button" class="btn" id="smsCSave">저장</button></div></div>';
+}
+function smsCSave() {
+  var e = SMS.cedit, v = function (id) { var el = $(id); return el ? el.value.trim() : ''; };
+  var name = e.locked ? e.name : v('smsCN'), cls = e.locked ? e.cls : v('smsCC'), p1 = v('smsP1'), p2 = v('smsP2'), s = v('smsS'), tag = v('smsTag');
+  if (!name) { SMS.msg = '이름을 적어 주세요'; draw(); return; }
+  var bad = [['학부모 번호', p1], ['학부모 번호 2', p2], ['학생 번호', s]].filter(function (x) { return x[1] && !smsOkTel(x[1]); })[0];
+  if (bad) { SMS.msg = bad[0] + ' 모양이 올바르지 않습니다 (예: 010-1234-5678)'; draw(); return; }
+  if (cls && !/^\d-\d{1,2}$/.test(cls)) { SMS.msg = '반은 3-2 처럼 적어 주세요 (비워도 됩니다)'; draw(); return; }
+  var key = e.k || ('m' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5));
+  SMS.cons[key] = { name: name, cls: cls, no: e.no || 0, p1: p1, p2: p2, s: s, tag: tag };
+  smsSave(); SMS.cedit = null; SMS.msg = ''; draw();
+}
+function smsPasteHtml() {
+  var p = SMS.paste;
+  return '<div class="card att-form"><h2>붙여넣어 한꺼번에 등록 <small>' + esc((ATT.me && ATT.me.cls) || '') + '</small></h2>'
+    + '<p class="muted" style="font-size:12.5px;margin:0 0 8px">엑셀·메모에서 복사해 붙여넣으세요. 한 줄에 한 학생: <b>번호(또는 이름) 학부모번호 [학생번호]</b><br>예) <code>3 010-1234-5678 010-2222-3333</code></p>'
+    + '<textarea class="fld" id="smsPaste" rows="7" placeholder="1 010-0000-0000&#10;2 010-0000-0000 010-1111-2222">' + esc(p.text) + '</textarea>'
+    + (p.result ? '<div class="att-lab">읽은 결과 ' + p.result.ok.length + '명' + (p.result.bad.length ? ' · 못 읽은 줄 ' + p.result.bad.length : '') + '</div><div class="note2" style="margin:0">'
+      + p.result.ok.map(function (x) { return esc(x.name) + ' ' + esc(smsFmtTel(x.p1)) + (x.s ? ' / ' + esc(smsFmtTel(x.s)) : ''); }).join('<br>')
+      + (p.result.bad.length ? '<br><span style="color:var(--warn)">못 읽음: ' + p.result.bad.map(esc).join(' · ') + '</span>' : '') + '</div>' : '')
+    + '<div class="mlrow" style="margin-top:12px"><button type="button" class="btn ghost sm" data-smscancel="1">취소</button><button type="button" class="btn ghost sm" id="smsPRead">읽어 보기</button>'
+    + (p.result && p.result.ok.length ? '<button type="button" class="btn" id="smsPApply">' + p.result.ok.length + '명 등록</button>' : '') + '</div></div>';
+}
+function smsParsePaste(text, roster) {
+  var ok = [], bad = [];
+  String(text || '').split('\n').forEach(function (ln) {
+    var raw = ln.trim(); if (!raw) return;
+    var tels = (raw.match(/(?:\+82|0)\d{1,2}[-.\s]?\d{3,4}[-.\s]?\d{4}/g) || []).filter(smsOkTel);
+    var rest = raw; tels.forEach(function (t) { rest = rest.replace(t, ' '); });
+    var key = rest.replace(/[,\t]/g, ' ').trim().split(/\s+/)[0] || '';
+    var st = null;
+    if (/^\d{1,2}$/.test(key)) st = roster.filter(function (s) { return s.no === Number(key); })[0];
+    else if (key) st = roster.filter(function (s) { return s.name === key; })[0];
+    if (!st || !tels.length) { bad.push(raw.slice(0, 24)); return; }
+    ok.push({ id: st.id, no: st.no, name: st.name, p1: tels[0], s: tels[1] || '' });
+  });
+  return { ok: ok, bad: bad };
+}
+function smsLoadRoster(then) {
+  if (!ATT.me || !ATT.cls) return;
+  SMS.rosterBusy = true; SMS.msg = '';
+  attApi('roster', '&cls=' + encodeURIComponent(ATT.me.cls)).then(function (r) {
+    SMS.rosterBusy = false;
+    if (r.ok) { SMS.rosterList = r.students || []; SMS.rosterCls = ATT.me.cls; if (then) then(); } else SMS.msg = r.msg || '명단을 받지 못했습니다';
+    if (VIEW === 'sms') draw();
+  }).catch(function (e) { SMS.rosterBusy = false; SMS.msg = '못 받았습니다 — ' + ((e && e.message) || e); if (VIEW === 'sms') draw(); });
 }
 
 /* ── 학사일정 ────────────────────────────────────────── */
@@ -693,14 +1415,39 @@ function notyet(err) {
 /* ══ 그리기 ═════════════════════════════════════════════ */
 var TITLES = {
   home: '혜원이지', tt: '시간표', meal: '급식', ac: '학사일정',
-  work: '주간업무', link: '바로가기', set: '설정', me: '내 이름'
+  work: '주간업무', att: '출결', sms: '문자 문구', link: '바로가기', set: '설정', me: '내 이름'
 };
 /* ── 하단 내비게이션 ── 홈·시간표·급식·학사일정·주간업무·바로가기 (설정은 홈 오른쪽 위 단추) */
 var NAV = [['home', 'home', '홈'], ['tt', 'book', '시간표'], ['meal', 'meal', '급식'],
   ['ac', 'cal', '학사일정'], ['work', 'work', '주간업무'], ['link', 'link', '바로가기']];
+/* ── 화면 기록: 뒤로 · 앞으로 · 홈 ──
+   브라우저 history 에 화면마다 한 칸씩 쌓는다 → 안드로이드 «뒤로» 버튼·스와이프도 같은 길을 간다.
+   HI = 지금 칸 번호, HMAX = 가 본 가장 먼 칸(앞으로 갈 수 있는지 알려고) */
+var HI = 0, HMAX = 0;
+function histReset() {
+  HI = 0; HMAX = 0;
+  try { history.replaceState({ v: VIEW, i: 0 }, ''); } catch (e) { /* 기록을 못 써도 화면 이동은 된다 */ }
+}
+function go(v) {
+  if (v === VIEW) { window.scrollTo(0, 0); return; }
+  HI++; HMAX = HI; VIEW = v; meQ = '';
+  try { history.pushState({ v: v, i: HI }, ''); } catch (e) { /* 위와 같다 */ }
+  draw(); window.scrollTo(0, 0);
+}
+function goBack() { if (HI > 0) { try { history.back(); } catch (e) { /* */ } } }
+function goFwd() { if (HI < HMAX) { try { history.forward(); } catch (e) { /* */ } } }
+window.addEventListener('popstate', function (e) {
+  var st = e.state;
+  if (!st || !st.v || VIEW === 'gate') return;
+  HI = st.i; if (HI > HMAX) HMAX = HI;
+  VIEW = st.v; meQ = ''; draw(); window.scrollTo(0, 0);
+});
 function navHtml() {
   var cur = VIEW === 'me' ? 'tt' : VIEW;   // 내 이름 고르는 화면은 시간표 안의 일
-  return '<nav class="nav">' + NAV.map(function (n) {
+  return '<nav class="nav">'
+    + '<button type="button" class="navb" data-nav="back" aria-label="뒤로 가기"' + (HI > 0 ? '' : ' disabled') + '>' + lineIc('prev') + '<span>뒤로</span></button>'
+    + '<button type="button" class="navb" data-nav="fwd" aria-label="앞으로 가기"' + (HI < HMAX ? '' : ' disabled') + '>' + lineIc('next') + '<span>앞으로</span></button>'
+    + NAV.map(function (n) {
     return '<button type="button" class="' + (n[0] === cur ? 'on' : '') + '" data-go="' + n[0] + '"'
       + (n[0] === cur ? ' aria-current="page"' : '') + '>' + lineIc(n[1]) + '<span>' + n[2] + '</span></button>';
   }).join('') + '</nav>';
@@ -713,6 +1460,8 @@ function draw() {
   else if (VIEW === 'tt') body = viewTT();
   else if (VIEW === 'meal') body = viewMeal();
   else if (VIEW === 'ac') body = viewAc();
+  else if (VIEW === 'att') body = viewAtt();
+  else if (VIEW === 'sms') body = viewSms();
   else if (VIEW === 'work') body = viewWork();
   else if (VIEW === 'link') body = viewLink();
   else if (VIEW === 'me') body = viewPickMe();
@@ -720,7 +1469,7 @@ function draw() {
   else body = viewHome();
 
   APP.innerHTML = '<div class="top">'
-    + (VIEW === 'home' ? '' : '<button type="button" class="back" data-go="home">‹</button>')
+    + (VIEW === 'home' ? '' : (HI > 0 ? '<button type="button" class="back" data-nav="back" aria-label="뒤로 가기">‹</button>' : '<button type="button" class="back" data-go="home" aria-label="홈">‹</button>'))
     + (VIEW === 'home' ? '<img class="logo" src="logo-512.png" alt="">' : '')
     + '<h1>' + esc(TITLES[VIEW] || '혜원이지') + '</h1>'
     + (VIEW === 'home'
@@ -732,7 +1481,132 @@ function draw() {
 
 function wire() {
   APP.querySelectorAll('[data-go]').forEach(function (b) {
-    b.addEventListener('click', function () { VIEW = b.dataset.go; meQ = ''; draw(); window.scrollTo(0, 0); });
+    b.addEventListener('click', function () { go(b.dataset.go); });
+  });
+  APP.querySelectorAll('[data-nav]').forEach(function (b) {
+    b.addEventListener('click', function () { if (b.dataset.nav === 'back') goBack(); else goFwd(); });
+  });
+  APP.querySelectorAll('[data-ttm]').forEach(function (b) {
+    b.addEventListener('click', function () { TT_MODE = b.dataset.ttm; LS.set('ttmode', TT_MODE); draw(); });
+  });
+  APP.querySelectorAll('[data-ttgc]').forEach(function (b) {
+    b.addEventListener('click', function () { TT_GC = b.dataset.ttgc; LS.set('ttcls', TT_GC); draw(); });
+  });
+  APP.querySelectorAll('[data-ttretry]').forEach(function (b) {
+    b.addEventListener('click', function () { clsErr = ''; loadCls(); draw(); });
+  });
+  /* 급식 — 한 글자 칠 때마다 다시 그리지 않는다(한글 입력이 깨진다). Enter·검색 단추로만 찾는다 */
+  var mq = $('mlQ');
+  if (mq) {
+    mq.addEventListener('input', function () { MLQ = mq.value; });
+    mq.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); MLQ = mq.value; mlSearch(); } });
+  }
+  var mf = $('mlFind'); if (mf) mf.addEventListener('click', function () { MLQ = (mq ? mq.value : MLQ); mlSearch(); });
+  var mx = $('mlX'); if (mx) mx.addEventListener('click', function () { MLQ = ''; MLRES = null; MLFOCUS = ''; draw(); });
+  var md = $('mlDate'); if (md) md.addEventListener('change', function () { if (/^\d{4}-\d{2}-\d{2}$/.test(md.value)) { MLRES = null; mlGo(md.value); } });
+  APP.querySelectorAll('[data-mlgo]').forEach(function (b) { b.addEventListener('click', function () { mlGo(b.dataset.mlgo); }); });
+  APP.querySelectorAll('[data-mlwk]').forEach(function (b) { b.addEventListener('click', function () { mlWeek(Number(b.dataset.mlwk)); }); });
+  APP.querySelectorAll('[data-mlretry]').forEach(function (b) { b.addEventListener('click', function () { ML.err = ''; draw(); }); });
+  /* 출결 — 입력칸은 칠 때마다 다시 그리지 않는다(한글 입력이 깨진다) */
+  function onI(id, fn) { var el = $(id); if (el) el.addEventListener('input', function () { fn(el.value); }); }
+  onI('attDate', function (v) { ATT.form.date = v; });
+  onI('attReason', function (v) { ATT.form.reason = v; });
+  onI('attTime', function (v) { ATT.form.time = v; });
+  onI('attEnd', function (v) { ATT.form.end = v; });
+  var ac = $('attCode'), ag = $('attCodeGo');
+  var doCode = function () { ATT.code = (ac.value || '').trim(); LS.set('attcode', ATT.code); ATT.busy = false; ATT.st = 'idle'; draw(); };
+  if (ag && ac) { ag.addEventListener('click', doCode); ac.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); doCode(); } }); }
+  var an = $('attNext'); if (an) an.addEventListener('click', attNext);
+  var as = $('attSave'); if (as) as.addEventListener('click', attSave);
+  APP.querySelectorAll('[data-attretry]').forEach(function (b) { b.addEventListener('click', function () { if (b.dataset.attretry === '2') { attLoadList(); draw(); } else { ATT.st = 'idle'; ATT.busy = false; draw(); } }); });
+  APP.querySelectorAll('[data-attcls]').forEach(function (b) { b.addEventListener('click', function () { ATT.cls = b.dataset.attcls; ATT.form = null; ATT.roster = null; ATT.last = null; ATT.msg = ''; ATT.month = ''; attLoadList(); draw(); }); });
+  APP.querySelectorAll('[data-attmon]').forEach(function (b) { b.addEventListener('click', function () { ATT.month = b.dataset.attmon; draw(); }); });
+  APP.querySelectorAll('[data-attnew]').forEach(function (b) { b.addEventListener('click', function () { ATT.form = attNewForm(); ATT.msg = ''; ATT.last = null; draw(); }); });
+  APP.querySelectorAll('[data-attclose]').forEach(function (b) { b.addEventListener('click', function () { ATT.form = null; ATT.msg = ''; draw(); }); });
+  APP.querySelectorAll('[data-attmore]').forEach(function (b) { b.addEventListener('click', function () { ATT.form.more = true; draw(); }); });
+  APP.querySelectorAll('[data-attstep]').forEach(function (b) { b.addEventListener('click', function () { ATT.form.step = b.dataset.attstep; ATT.msg = ''; draw(); }); });
+  APP.querySelectorAll('[data-attstu]').forEach(function (b) { b.addEventListener('click', function () {
+    var s = (ATT.roster || []).filter(function (x) { return x.id === b.dataset.attstu; })[0]; if (s) { ATT.form.id = s.id; ATT.form.name = s.name; } draw(); }); });
+  APP.querySelectorAll('[data-atttype]').forEach(function (b) { b.addEventListener('click', function () { ATT.form.type = b.dataset.atttype; draw(); }); });
+  APP.querySelectorAll('[data-attundo]').forEach(function (b) { b.addEventListener('click', attUndo); });
+  /* 문자 문구 — 입력칸은 칠 때마다 다시 그리지 않는다(한글 입력이 깨진다) */
+  function smsSync() { var t = $('smsTitle'), b = $('smsBody'); if (SMS.edit) { if (t) SMS.edit.title = t.value; if (b) SMS.edit.body = b.value; } }
+  var on = function (sel, fn) { APP.querySelectorAll(sel).forEach(function (b) { b.addEventListener('click', function () { fn(b); }); }); };
+  function smsSyncDraft() { var t = $('smsTitle'), d = $('smsDraft'); if (t) SMS.draftTitle = t.value; if (d) SMS.draft = d.value; }
+  function smsPv() { var p = $('smsPv'); if (p) p.textContent = smsFill(SMS.draft, smsCurCon()); }
+  function smsDirty() { var a = SMS.tpls.filter(function (t) { return t.id === SMS.tag; })[0], el = $('smsDirty'); if (a && el) el.hidden = !(SMS.draft !== a.body || SMS.draftTitle !== a.title); }
+  on('[data-smstab]', function (b) { SMS.tab = b.dataset.smstab; SMS.msg = ''; SMS.confirm = ''; SMS.note = ''; draw(); window.scrollTo(0, 0); });
+  on('[data-smstarget]', function (b) { SMS.target = b.dataset.smstarget; SMS.tag = ''; SMS.draftFor = ''; SMS.msg = ''; SMS.note = ''; SMS.confirm = ''; if (SMS.who) SMS.num = smsDefNum(SMS.cons[SMS.who]); draw(); });
+  on('[data-smstag]', function (b) { SMS.tag = b.dataset.smstag; SMS.draftFor = ''; SMS.msg = ''; SMS.note = ''; SMS.confirm = ''; draw(); });
+  on('[data-smsaddtag]', function () {
+    var rec = { id: 't' + Date.now().toString(36), title: '새 문구', cat: SMS.target, body: '' };
+    SMS.tpls.push(rec); smsSave(); SMS.tag = rec.id; SMS.draftFor = ''; SMS.note = ''; draw();
+    var t = $('smsTitle'); if (t) { t.focus(); t.select(); }
+  });
+  var td = $('smsTitle'); if (td) td.addEventListener('input', function () { SMS.draftTitle = td.value; smsDirty(); });
+  var dr = $('smsDraft'); if (dr) dr.addEventListener('input', function () { SMS.draft = dr.value; SMS.note = ''; smsPv(); smsDirty(); });
+  on('[data-smsvar]', function (b) {
+    var el = $('smsDraft'); if (!el) return;
+    var s = el.selectionStart, e = el.selectionEnd, v = b.dataset.smsvar, txt = el.value;
+    smsSyncDraft(); SMS.draft = txt.slice(0, s) + v + txt.slice(e); SMS.note = ''; draw();
+    var n = $('smsDraft'); if (n) { n.focus(); n.setSelectionRange(s + v.length, s + v.length); }
+  });
+  var sv = $('smsSaveTpl'); if (sv) sv.addEventListener('click', function () {
+    smsSyncDraft();
+    if (!SMS.draftTitle.trim()) { SMS.msg = '태그 이름을 적어 주세요'; draw(); return; }
+    if (!SMS.draft.trim()) { SMS.msg = '내용을 적어 주세요'; draw(); return; }
+    var a = SMS.tpls.filter(function (t) { return t.id === SMS.tag; })[0];
+    if (a) { a.title = SMS.draftTitle.trim(); a.body = SMS.draft; smsSave(); SMS.draftFor = ''; SMS.note = '«' + a.title + '» 저장했습니다'; SMS.msg = ''; draw(); }
+  });
+  var rs = $('smsResetTpl'); if (rs) rs.addEventListener('click', function () { SMS.draftFor = ''; SMS.note = '저장된 내용으로 되돌렸습니다'; SMS.msg = ''; draw(); });
+  on('[data-smstdel]', function (b) { smsSyncDraft(); SMS.confirm = 'tdel:' + b.dataset.smstdel; draw(); });
+  on('[data-smstdel2]', function (b) { SMS.tpls = SMS.tpls.filter(function (x) { return x.id !== b.dataset.smstdel2; }); smsSave(); SMS.confirm = ''; SMS.tag = ''; SMS.draftFor = ''; SMS.note = ''; draw(); });
+  on('[data-smsdelx]', function () { SMS.confirm = ''; draw(); });
+  on('[data-smsrs]', function (b) {
+    var s = (SMS.rosterList || []).filter(function (x) { return x.id === b.dataset.smsrs; })[0]; if (!s) return;
+    smsSyncDraft(); SMS.who = ''; SMS.num = ''; SMS.tmpTel = ''; SMS.tmpCon = { id: s.id, name: s.name, cls: SMS.rosterCls || '', no: s.no }; SMS.msg = ''; draw();
+  });
+  on('[data-smscon]', function (b) { smsSyncDraft(); SMS.tmpCon = null; SMS.tmpTel = ''; SMS.who = b.dataset.smscon; SMS.num = smsDefNum(SMS.cons[SMS.who]); SMS.msg = ''; draw(); });
+  on('[data-smsnum]', function (b) { smsSyncDraft(); SMS.num = b.dataset.smsnum; draw(); });
+  on('[data-smspicksend]', function () {
+    try { navigator.contacts.select(['tel'], { multiple: false }).then(function (r) { if (r && r[0] && r[0].tel && r[0].tel[0]) { smsSyncDraft(); SMS.tmpTel = r[0].tel[0]; draw(); } }).catch(function () { /* 취소 */ }); } catch (e) { /* 지원 안 함 */ }
+  });
+  var sg = $('smsGo'); if (sg) sg.addEventListener('click', function () { smsSyncDraft(); smsSend(); });
+  var sq = $('smsQ'); if (sq) { sq.addEventListener('input', function () { SMS.q = sq.value; }); sq.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); smsSyncDraft(); SMS.q = sq.value; draw(); } }); sq.addEventListener('change', function () { smsSyncDraft(); SMS.q = sq.value; draw(); }); }
+  /* 연락처 */
+  on('[data-smsroster]', function () { smsLoadRoster(); draw(); });
+  on('[data-smsro]', function (b) {
+    var s = (SMS.rosterList || []).filter(function (x) { return x.id === b.dataset.smsro; })[0]; if (!s) return;
+    var c = SMS.cons[s.id] || {};
+    SMS.cedit = { k: s.id, name: s.name, cls: SMS.rosterCls, no: s.no, p1: c.p1 || '', p2: c.p2 || '', s: c.s || '', tag: c.tag || '', locked: true }; SMS.msg = ''; draw();
+  });
+  on('[data-smsadd]', function () { SMS.cedit = { k: '', name: '', cls: '', no: 0, p1: '', p2: '', s: '', tag: '', locked: false }; SMS.msg = ''; draw(); });
+  on('[data-smscl]', function (b) {
+    var c = SMS.cons[b.dataset.smscl]; if (!c) return;
+    SMS.cedit = { k: b.dataset.smscl, name: c.name, cls: c.cls || '', no: c.no || 0, p1: c.p1 || '', p2: c.p2 || '', s: c.s || '', tag: c.tag || '', locked: /^\d{4}$/.test(b.dataset.smscl) }; SMS.msg = ''; draw();
+  });
+  on('[data-smscancel]', function () { SMS.cedit = null; SMS.paste = null; SMS.msg = ''; SMS.confirm = ''; draw(); });
+  var cs = $('smsCSave'); if (cs) cs.addEventListener('click', smsCSave);
+  on('[data-smscdel]', function (b) { if (SMS.confirm === 'cdel:' + b.dataset.smscdel) { delete SMS.cons[b.dataset.smscdel]; smsSave(); SMS.cedit = null; SMS.confirm = ''; } else SMS.confirm = 'cdel:' + b.dataset.smscdel; draw(); });
+  on('[data-smsclear]', function () { SMS.confirm = 'clear'; draw(); });
+  on('[data-smsclear2]', function () { SMS.cons = {}; smsSave(); SMS.confirm = ''; draw(); });
+  on('[data-smspick]', function (b) {
+    var id = b.dataset.smspick;
+    try { navigator.contacts.select(['tel'], { multiple: false }).then(function (r) { if (r && r[0] && r[0].tel && r[0].tel[0]) { var el = $(id); if (el) el.value = smsFmtTel(r[0].tel[0]); } }).catch(function () { /* 취소해도 그만 */ }); } catch (e) { /* 지원 안 함 */ }
+  });
+  on('[data-smspaste]', function () { SMS.paste = { text: '', result: null }; if (!SMS.rosterList) smsLoadRoster(); draw(); });
+  var pt = $('smsPaste'); if (pt) pt.addEventListener('input', function () { SMS.paste.text = pt.value; });
+  var pr = $('smsPRead'); if (pr) pr.addEventListener('click', function () {
+    SMS.paste.text = (pt ? pt.value : SMS.paste.text);
+    if (!SMS.rosterList) { SMS.msg = '우리 반 명단을 아직 못 불러왔습니다 — 잠시 뒤 다시 눌러 주세요'; smsLoadRoster(); draw(); return; }
+    SMS.paste.result = smsParsePaste(SMS.paste.text, SMS.rosterList); SMS.msg = ''; draw();
+  });
+  var pa = $('smsPApply'); if (pa) pa.addEventListener('click', function () {
+    (SMS.paste.result.ok || []).forEach(function (x) {
+      var old = SMS.cons[x.id] || {};
+      SMS.cons[x.id] = { name: x.name, cls: SMS.rosterCls, no: x.no, p1: x.p1, p2: old.p2 || '', s: x.s || old.s || '', tag: old.tag || '' };
+    });
+    smsSave(); SMS.paste = null; SMS.msg = ''; draw();
   });
   APP.querySelectorAll('[data-acm]').forEach(function (b) {
     b.addEventListener('click', function () { AC_M = b.dataset.acm; draw(); });
@@ -742,7 +1616,7 @@ function wire() {
   });
   APP.querySelectorAll('[data-me]').forEach(function (b) {
     b.addEventListener('click', function () {
-      ME = b.dataset.me; LS.set('me', ME); VIEW = 'tt'; draw();
+      ME = b.dataset.me; LS.set('me', ME); attReset(); go('tt');
     });
   });
   var q = $('meQ');
@@ -758,7 +1632,7 @@ function wire() {
     var go = function () {
       var v = ($('gKey').value || '').trim();
       if (!v) return;
-      KEY = v; LS.set('key', v); ERR = ''; VIEW = 'home'; load();
+      KEY = v; LS.set('key', v); ERR = ''; VIEW = 'home'; histReset(); load();
     };
     g.addEventListener('click', go);
     $('gKey').addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
@@ -785,7 +1659,7 @@ function redrawKeep(q) {
   }).join('');
   box.querySelectorAll('[data-me]').forEach(function (b) {
     b.addEventListener('click', function () {
-      ME = b.dataset.me; LS.set('me', ME); VIEW = 'tt'; draw();
+      ME = b.dataset.me; LS.set('me', ME); attReset(); go('tt');
     });
   });
 }
@@ -826,7 +1700,7 @@ function redrawKeep(q) {
   var c = LS.get('cache', '');
   if (c) { try { D = JSON.parse(c); } catch (e) {} }   // 먼저 지난 것을 보여 준다
   if (!KEY) { VIEW = 'gate'; draw(); }
-  else { draw(); load(); }
+  else { histReset(); draw(); load(); }
   /* 앱을 다시 앞으로 꺼낼 때 자료도 같이 새로 받는다 */
   document.addEventListener('visibilitychange', function () {
     if (!document.hidden && KEY && !LOADING) load();
