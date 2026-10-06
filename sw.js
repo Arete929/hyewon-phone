@@ -1,4 +1,4 @@
-/* 혜원이지 서비스워커 | @version 1.13.0
+/* 혜원이지 서비스워커 | @version 1.14.0
    ★ v1.2.5 — «새로고침해도 옛 판(1.2.2)» 이 나오던 것을 고쳤다. 원인 둘:
      ① 설치할 때 addAll 이 브라우저(HTTP) 캐시를 거쳐서, GitHub Pages 의 10분 캐시 때문에 «새 서비스워커가 옛 index.html 을 담는» 일이 있었다 → cache:'reload' 로 늘 서버에서 받는다.
      ② 화면(index.html)까지 «캐시 먼저» 라 새 판이 있어도 옛 판이 먼저 떴다 → 화면은 «서버 먼저, 안 되면 캐시».
@@ -11,7 +11,7 @@
        ③ controllerchange   — 바뀌면 화면이 스스로 새로고침한다    (index.html)
        ④ visibilitychange   — 앞으로 나올 때마다 새 판을 «찾아본다» (index.html)
      ④ 가 없으면 ①②③ 이 다 있어도 소용없다. 찾아보질 않으니 발견을 못 한다. */
-var CACHE = 'phone-v1.13.0';
+var CACHE = 'phone-v1.14.0';
 var ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-512.png', './icon-192.png', './logo-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', function (e) {

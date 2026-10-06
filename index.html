@@ -81,11 +81,12 @@ button,input{font:inherit;color:inherit}
   background:var(--bar);border-top:1px solid var(--line);
   padding:6px 2px calc(6px + env(safe-area-inset-bottom))}
 .nav button{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px;
-  background:none;border:0;padding:5px 0;color:var(--dim);font-size:10px;font-weight:700;
+  background:none;border:0;padding:5px 0;color:var(--dim);font-size:clamp(8.5px,2.5vw,10px);font-weight:700;
   letter-spacing:-.4px;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.nav button .li{width:22px;height:22px;display:block;box-sizing:content-box;padding:4px 15px;border-radius:999px}
+.nav button .li{width:22px;height:22px;display:block;box-sizing:content-box;padding:4px clamp(4px,1.7vw,13px);border-radius:999px}
 .nav button.on{color:var(--accent)}
 .nav button.on .li{background:var(--soft)}
+.nav button span{white-space:nowrap}
 .wkdesc{font-size:12.5px;color:var(--dim);margin:0 2px 10px;line-height:1.55}.wkdesc b{color:var(--fg)}
 .wkweeks{max-height:132px;overflow-y:auto;margin-bottom:10px;padding:2px}
 /* 문자 문구 (v1.7.0) */
@@ -105,6 +106,16 @@ button,input{font:inherit;color:inherit}
 .callnow{display:inline-flex;align-items:center;gap:6px;margin-top:8px;text-decoration:none;color:var(--ok)}
 .btn .li{width:18px;height:18px;display:inline-block;vertical-align:-4px;margin-right:4px}
 .btn.sm .li{margin-right:0}
+.shbtn{flex:none;width:44px;height:44px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:flex;align-items:center;justify-content:center;text-decoration:none}
+.shbtn img{width:26px;height:26px;display:block}
+.shbtn.off{opacity:.45}
+.seg2 .shbtn{margin-left:6px}
+.whatsnew{margin:0 0 12px;padding:12px 14px;border-radius:calc(var(--rad) - 4px);background:var(--soft);border:1px solid var(--cb)}
+.wnh{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.wnh b{font-size:14px;color:var(--accent)}
+.wnx{border:0;border-radius:999px;background:var(--accent);color:var(--on);padding:6px 14px;font-size:12.5px;font-weight:700;cursor:pointer}
+.wnv{margin:8px 0 2px;font-size:12px;font-weight:700;color:var(--dim)}
+.whatsnew ul{margin:0;padding-left:18px;font-size:13px;line-height:1.55}
 .linkbtn{all:unset;color:var(--accent);font-weight:800;text-decoration:underline;cursor:pointer}
 .tagbox{margin:10px 0;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--accent) 8%,var(--bg));border:1px dashed var(--line);font-size:13px;line-height:1.6}
 .tagbox .tgt{font-weight:800;color:var(--accent)}.tagbox .tgok{margin:6px 0;font-weight:700;color:var(--ok)}.tagbox .btn{margin-top:6px}
@@ -356,15 +367,15 @@ table.tt td.today{background:color-mix(in srgb,var(--accent) 9%,var(--card))}
 
 <script>
 /* ══════════════════════════════════════════════════════════
-   혜원이지 | @version 1.13.0
-   수정요약: v1.13.0 설정에서 테마 고르기(자동·화이트레드·다크민트) / 출결 목록에서 «삭제»(담임이 제 반 줄만, 앱 안 확인 뒤). / v1.12.2 연락처가 «학생기록» 시트의 «연락처» 탭에 저장됨(안내 글). / v1.12.1 홈 타일을 작게(아이콘 옆에 제목) — 첫 화면에서 메뉴가 잘리지 않고 다 보임. / v1.12.0 모양 — 기본은 «화이트 + 혜원 레드», 폰이 다크 모드면 «다크 + 민트» / 이름 외우기를 혜원이지에서 뺌(지비스 전용으로 보관) / v1.11.0 이름 외우기 — 지비스가 만든 «폰용 사진 묶음» 을 불러와(사진은 이 폰 안에만) 연습 카드·선택형·서답형·짝맞추기. / v1.10.0 연락처를 폰이 아니라 계정 드라이브의 «혜원이지 연락처» 시트에 — 담임 확인 후 우리 반 것만 불러오고(메모리로만) 폰에서 입력·붙여넣기로 시트에 저장. 문자 보내기는 시트 번호로 받는 사람을 채움. / v1.9.0 주간업무 «입력본 / 합본» 구분 — 합본은 주 목록에서 골라 한 주씩(최신이 맨 위). / v1.8.1 ★홈 타일·하단 바가 눌리지 않던 것 수정 — wire() 안의 로그인용 지역 변수 go 가 이동 함수 go() 를 가려서 «go is not a function» 이었다(v1.4.0부터). / v1.8.0 문자 문구를 «태그 → 내용 고치기 → 자동 미리보기» 작성기로 — 발송 대상(학생/학부모)별 태그(추가·저장·초기화·삭제), {이름}=성 뺀 이름·{성명}=전체, 쓰는 대로 미리보기, 줄바꿈 그대로. / v1.7.0 문자 문구 — 문구 저장·고치기·지우기, 자리표({이름} {날짜} {반} {선생님}), 연락처를 미리 등록(직접·우리 반 명단·붙여넣기·안드로이드 연락처 가져오기)해 받는 사람을 채워 문자 앱을 연다(한 사람씩). 데이터는 이 폰에만. / v1.6.0 급식 여중·여고 점심 둘 다(홈 타일 포함) · 출결(담임 확인: 컴시간 번호·가린 이름 + 역할표, 보기·새 출결 적기·방금 넣은 것 취소). / v1.5.0 시간표에 «학급 시간표» · 급식에 주 넘기기/날짜로 이동/급식지도/날짜·이름 찾기 (다리 v1.2.0 의 what=cls·duty 사용). / v1.4.0 하단 바에 뒤로·앞으로 버튼(홈은 기존 홈 탭) — 화면 기록을 history 로 쌓아 안드로이드 뒤로 버튼과도 같이 감. / v1.3.1 앱 아이콘 로고를 틀 가득(높이 104%, 뾰족한 잎 끝 약간 잘림) · 아이폰용 apple-touch-icon.png 따로. / v1.3.0 하단 내비게이션 바(홈·시간표·급식·학사일정·주간업무·바로가기) · 앱 아이콘 배경을 로고 빨강(#E9030C)으로 · 앱 안 로고는 투명 logo-512.png. / v1.2.9 마스크용 아이콘 — 로고 외접원이 캔버스를 가득(99%) 채우게 키움(흰 틀이 최대한 가려지게). / v1.2.8 앱 아이콘 — 로고를 틀 가득(any 98%·maskable 안전영역 가득) 크게, 배경 투명. / v1.2.7 표 안 글은 원래 줄바꿈 자리에서만 줄바꿈(자동 꺾임 없음) — 넓으면 좌우로 밀어 봄. / v1.2.6 주간업무 읽기 쉽게 — 줄간격 넓힘·번호/기호 내어쓰기와 단계별 들여쓰기·표를 가로로 밀어 보게 하고 짧은 칸은 한 줄로·표 머리줄/줄무늬. / v1.2.5 새로고침해도 옛 판이 뜨던 것(서비스워커) 수정 — sw.js 머리말 참고. / v1.2.4 학사일정 «1년 전체» 칩 + 묵은 탭(ok:false)이 같은 달로 겹쳐 나오던 것 제거. / v1.2.3 학사일정 — 타일 이름을 «학사일정» 으로, 달 칩으로 다른 달도 본다. / v1.2.2 타일 이모지(📘🍚📅📋🔗)를 선 아이콘으로. / v1.2.1 로그인 뒤 홈 머리글에 로고 · 화면에 보이는 버전 표기를 맞춤(그전엔 1.1.0 으로 남아 있었다). / v1.2.0 로그인 화면 로고와 설치용 앱 아이콘을 «혜원» 꽃 3D 로고(투명 배경)로 · icon-192 추가. / v1.1.0 이름을 «혜원이지» 로. / v1.0.0 첫 판 — 타일 홈 + 시간표·급식·학사일정·주간업무·바로가기
+   혜원이지 | @version 1.14.0
+   수정요약: v1.14.0 문자 문구에 연결된 시트 열기(시트 아이콘 단추) · 하단 메뉴에 출결 탭. / v1.13.0 설정에서 테마 고르기(자동·화이트레드·다크민트) / 출결 목록에서 «삭제»(담임이 제 반 줄만, 앱 안 확인 뒤). / v1.12.2 연락처가 «학생기록» 시트의 «연락처» 탭에 저장됨(안내 글). / v1.12.1 홈 타일을 작게(아이콘 옆에 제목) — 첫 화면에서 메뉴가 잘리지 않고 다 보임. / v1.12.0 모양 — 기본은 «화이트 + 혜원 레드», 폰이 다크 모드면 «다크 + 민트» / 이름 외우기를 혜원이지에서 뺌(지비스 전용으로 보관) / v1.11.0 이름 외우기 — 지비스가 만든 «폰용 사진 묶음» 을 불러와(사진은 이 폰 안에만) 연습 카드·선택형·서답형·짝맞추기. / v1.10.0 연락처를 폰이 아니라 계정 드라이브의 «혜원이지 연락처» 시트에 — 담임 확인 후 우리 반 것만 불러오고(메모리로만) 폰에서 입력·붙여넣기로 시트에 저장. 문자 보내기는 시트 번호로 받는 사람을 채움. / v1.9.0 주간업무 «입력본 / 합본» 구분 — 합본은 주 목록에서 골라 한 주씩(최신이 맨 위). / v1.8.1 ★홈 타일·하단 바가 눌리지 않던 것 수정 — wire() 안의 로그인용 지역 변수 go 가 이동 함수 go() 를 가려서 «go is not a function» 이었다(v1.4.0부터). / v1.8.0 문자 문구를 «태그 → 내용 고치기 → 자동 미리보기» 작성기로 — 발송 대상(학생/학부모)별 태그(추가·저장·초기화·삭제), {이름}=성 뺀 이름·{성명}=전체, 쓰는 대로 미리보기, 줄바꿈 그대로. / v1.7.0 문자 문구 — 문구 저장·고치기·지우기, 자리표({이름} {날짜} {반} {선생님}), 연락처를 미리 등록(직접·우리 반 명단·붙여넣기·안드로이드 연락처 가져오기)해 받는 사람을 채워 문자 앱을 연다(한 사람씩). 데이터는 이 폰에만. / v1.6.0 급식 여중·여고 점심 둘 다(홈 타일 포함) · 출결(담임 확인: 컴시간 번호·가린 이름 + 역할표, 보기·새 출결 적기·방금 넣은 것 취소). / v1.5.0 시간표에 «학급 시간표» · 급식에 주 넘기기/날짜로 이동/급식지도/날짜·이름 찾기 (다리 v1.2.0 의 what=cls·duty 사용). / v1.4.0 하단 바에 뒤로·앞으로 버튼(홈은 기존 홈 탭) — 화면 기록을 history 로 쌓아 안드로이드 뒤로 버튼과도 같이 감. / v1.3.1 앱 아이콘 로고를 틀 가득(높이 104%, 뾰족한 잎 끝 약간 잘림) · 아이폰용 apple-touch-icon.png 따로. / v1.3.0 하단 내비게이션 바(홈·시간표·급식·학사일정·주간업무·바로가기) · 앱 아이콘 배경을 로고 빨강(#E9030C)으로 · 앱 안 로고는 투명 logo-512.png. / v1.2.9 마스크용 아이콘 — 로고 외접원이 캔버스를 가득(99%) 채우게 키움(흰 틀이 최대한 가려지게). / v1.2.8 앱 아이콘 — 로고를 틀 가득(any 98%·maskable 안전영역 가득) 크게, 배경 투명. / v1.2.7 표 안 글은 원래 줄바꿈 자리에서만 줄바꿈(자동 꺾임 없음) — 넓으면 좌우로 밀어 봄. / v1.2.6 주간업무 읽기 쉽게 — 줄간격 넓힘·번호/기호 내어쓰기와 단계별 들여쓰기·표를 가로로 밀어 보게 하고 짧은 칸은 한 줄로·표 머리줄/줄무늬. / v1.2.5 새로고침해도 옛 판이 뜨던 것(서비스워커) 수정 — sw.js 머리말 참고. / v1.2.4 학사일정 «1년 전체» 칩 + 묵은 탭(ok:false)이 같은 달로 겹쳐 나오던 것 제거. / v1.2.3 학사일정 — 타일 이름을 «학사일정» 으로, 달 칩으로 다른 달도 본다. / v1.2.2 타일 이모지(📘🍚📅📋🔗)를 선 아이콘으로. / v1.2.1 로그인 뒤 홈 머리글에 로고 · 화면에 보이는 버전 표기를 맞춤(그전엔 1.1.0 으로 남아 있었다). / v1.2.0 로그인 화면 로고와 설치용 앱 아이콘을 «혜원» 꽃 3D 로고(투명 배경)로 · icon-192 추가. / v1.1.0 이름을 «혜원이지» 로. / v1.0.0 첫 판 — 타일 홈 + 시간표·급식·학사일정·주간업무·바로가기
 
    ★ 폰은 아무것도 긁지 않는다. «다리»(GAS)가 다 긁어서 정리해 준 것만 받는다.
      폰 브라우저는 남의 사이트를 직접 못 부르기 때문이다(같은 출처 규칙).
    ★ 드롭다운(select)은 쓰지 않는다 — 칩·단추로 고른다.
    ══════════════════════════════════════════════════════════ */
 
-var VERSION = '1.13.0';
+var VERSION = '1.14.0';
 /* ── 테마 — auto(폰 설정을 따름) · light(화이트+혜원 레드) · dark(다크+민트). 고른 것은 이 폰에만 기억한다 ── */
 var THEMES = [['auto', '자동', ['#FAFAF9', '#C1121F', '#0E1413', '#5EEAD4']], ['light', '화이트·레드', ['#FAFAF9', '#FFFFFF', '#FCE9EA', '#C1121F']], ['dark', '다크·민트', ['#0E1413', '#172120', '#12302D', '#5EEAD4']]];
 var THEME = (function () { var t = ''; try { t = localStorage.getItem('phone.theme') || ''; } catch (e) { /* */ } return /^(auto|light|dark)$/.test(t) ? t : 'auto'; })();
@@ -1046,6 +1057,7 @@ function attUndo() {
    ★ 문자를 앱이 대신 보내지 않는다. 문자 앱을 «문구가 채워진 채» 열어 줄 뿐이고, 보내기는 선생님이 누른다. 한 사람씩 보낸다.
    ★ 주소: 안드로이드 sms:번호?body=…  /  아이폰 sms:번호&body=… */
 var SMS = { consLoaded: false, consBusy: false, consErr: '', sheetUrl: '', target: '학생', tag: '', draft: '', draftTitle: '', draftFor: '', note: '', tmpCon: null, tmpTel: '', tab: 'tpl', cat: '전체', tpls: null, cons: null, sel: '', who: '', num: '', body: '', edit: null, cedit: null, q: '', confirm: '', msg: '', paste: null };
+var SHEET_IC = 'data:image/png;base64,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';   // 표준 시트 아이콘(gas-sheet-shortcut) — 앱마다 같은 그림
 var SMS_DEFAULT = [
   { id: 's1', title: '생리통결석', cat: '학생', body: '{이름}아, 안녕하세요. 알겠습니다.\n출결신고서비스 부탁드리겠습니다.\n사유는 극심한 생리통 증상으로 가정에서 휴식을 취함으로 부탁드립니다.\n출결신고서비스 하시고 연락주시면 바로 확인하겠습니다.' },
   { id: 's2', title: '질병지각', cat: '학생', body: '{이름}아, 안녕하세요. 질병지각 확인했습니다.\n사유는 질병(몸이 좋지 않음)으로 부탁드립니다.\n출결신고서비스 하시고 연락주시면 바로 확인하겠습니다.' },
@@ -1145,11 +1157,18 @@ function smsDefNum(con) {   // 발송 대상에 맞는 번호를 먼저 고른�
   for (var i = 0; i < want.length; i++) { if (ns.filter(function (n) { return n[0] === want[i]; })[0]) return want[i]; }
   return ns.length ? ns[0][0] : '';
 }
+function smsSheetBtn() {
+  if (!smsMyCls()) return '';                                   // 담임이 아니면 시트에 못 들어간다 — 단추도 없다
+  return SMS.sheetUrl
+    ? '<a class="shbtn" href="' + esc(SMS.sheetUrl) + '" target="_blank" rel="noopener" aria-label="연결된 시트 열기" title="연결된 시트 열기"><img src="' + SHEET_IC + '" alt=""></a>'
+    : '<span class="shbtn off" role="img" aria-label="시트 주소를 불러오는 중" title="시트 주소를 불러오는 중"><img src="' + SHEET_IC + '" alt=""></span>';
+}
 function viewSms() {
   smsLoad();
+  if (smsMyCls()) smsLoadCons();   // 시트 주소는 연락처를 부를 때 같이 온다
   if (ATT.st === 'idle' && attWho() && !ATT.busy) attLoadMe();
   var h = '<div class="seg2"><button type="button" class="chip' + (SMS.tab === 'tpl' ? ' on' : '') + '" data-smstab="tpl">문자 보내기</button>'
-    + '<button type="button" class="chip' + (SMS.tab === 'con' ? ' on' : '') + '" data-smstab="con">연락처 <small>' + Object.keys(SMS.cons).length + '</small></button></div>';
+    + '<button type="button" class="chip' + (SMS.tab === 'con' ? ' on' : '') + '" data-smstab="con">연락처 <small>' + Object.keys(SMS.cons).length + '</small></button>' + smsSheetBtn() + '</div>';
   return h + (SMS.tab === 'con' ? smsConHtml() : smsComposerHtml());
 }
 function smsComposerHtml() {
@@ -1223,8 +1242,7 @@ function smsConHtml() {
   var h = '<div class="card"><h2>' + esc(cls) + ' 연락처 <small>(학생기록 시트의 «연락처» 탭)</small></h2>'
     + '<p class="muted" style="margin:0 0 10px;font-size:13px">번호는 <b>계정 드라이브의 시트</b>에 저장됩니다. 이 폰에는 저장하지 않고, 화면을 열 때 불러옵니다. 시트에 직접 붙여 넣어도 «다시 불러오기»로 읽어 옵니다.</p>'
     + '<div class="mlrow" style="flex-wrap:wrap">' + '<button type="button" class="btn sm" data-smsreload="1"' + (SMS.consBusy ? ' disabled' : '') + '>↻ 시트에서 다시 불러오기</button>'
-    + '<button type="button" class="btn ghost sm" data-smspaste="1">붙여넣어 한꺼번에 저장</button>'
-    + (SMS.sheetUrl ? '<a class="btn ghost sm" style="text-decoration:none" href="' + esc(SMS.sheetUrl) + '" target="_blank" rel="noopener">시트 열기</a>' : '') + '</div></div>';
+    + '<button type="button" class="btn ghost sm" data-smspaste="1">붙여넣어 한꺼번에 저장</button>' + '</div></div>';
   if (SMS.consBusy && !SMS.consLoaded) h += '<div class="spin" style="padding:16px 0">시트에서 연락처를 불러오는 중…</div>';
   if (SMS.consErr) h += '<div class="atwarn">' + esc(SMS.consErr) + '</div>' + '<button type="button" class="btn ghost sm" data-smsreload="1">다시 해 보기</button>';
   if (SMS.msg) h += '<div class="atwarn">' + esc(SMS.msg) + '</div>';
@@ -1504,6 +1522,33 @@ function FEEDURL() {
 }
 
 /* ── 설정 ────────────────────────────────────────────── */
+var CHANGES = [
+  { v: '1.14.0', items: ['문자 문구 위에 «연결된 시트» 아이콘 단추가 생겼어요 — 누르면 연락처 시트가 열려요', '하단 메뉴에 «출결» 탭이 생겼어요', '업데이트되면 이렇게 화면 맨 위에 바뀐 내용을 알려 드려요'] },
+  { v: '1.13.0', items: ['설정에서 테마를 고를 수 있어요(자동 · 화이트·레드 · 다크·민트)', '출결 목록에서 줄마다 «삭제»할 수 있어요(담임 선생님, 확인을 한 번 더 물어요)'] },
+  { v: '1.12.1', items: ['홈 메뉴를 작게 줄여서 첫 화면에 한꺼번에 보여요'] },
+  { v: '1.12.0', items: ['새 모양 — 기본은 화이트·혜원 레드, 폰이 다크 모드면 다크·민트', '«이름 외우기»는 지비스 모바일로 옮겼어요'] },
+  { v: '1.10.0', items: ['문자 문구의 연락처를 학생기록 시트의 «연락처» 탭에 저장해요(폰에는 번호를 남기지 않아요)'] }
+];
+function verCmp(a, b) {   // '1.14.0' 과 '1.9.0' 을 숫자로 견준다
+  var x = String(a).split('.'), y = String(b).split('.');
+  for (var i = 0; i < 3; i++) { var d = (Number(x[i]) || 0) - (Number(y[i]) || 0); if (d) return d < 0 ? -1 : 1; }
+  return 0;
+}
+function whatsNewList() {
+  var seen = LS.get('seenver', '');
+  if (!seen) seen = LS.get('key', '') ? '1.13.0' : '';       // 이 기능이 생기기 전부터 쓰던 폰은 1.13.0 까지 본 것으로 본다
+  if (!seen) { LS.set('seenver', VERSION); return []; }       // 처음 설치 — 요약할 게 없다
+  var list = CHANGES.filter(function (c) { return verCmp(c.v, seen) > 0 && verCmp(c.v, VERSION) <= 0; });
+  if (!list.length && seen !== VERSION) LS.set('seenver', VERSION);   // 보여 줄 게 없는 판(요약 없이 고친 판)은 조용히 넘어간다
+  return list.slice(0, 4);
+}
+function whatsNewHtml() {
+  if (VIEW === 'gate') return '';
+  var l = whatsNewList();
+  if (!l.length) return '';
+  return '<div class="whatsnew" role="status"><div class="wnh"><b>새 판 v' + esc(VERSION) + '으로 바뀌었어요</b><button type="button" class="wnx" data-wnx="1">확인</button></div>'
+    + l.map(function (c) { return '<div class="wnv">v' + esc(c.v) + '</div><ul>' + c.items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>'; }).join('') + '</div>';
+}
 function viewSet() {
   return '<div class="card"><h2>모양 <small style="font-weight:700">(테마)</small></h2><div class="themes">' + THEMES.map(function (t) {
     var sw = t[2].map(function (c) { return '<b style="background:' + c + '"></b>'; }).join('');
@@ -1534,7 +1579,7 @@ var TITLES = {
 };
 /* ── 하단 내비게이션 ── 홈·시간표·급식·학사일정·주간업무·바로가기 (설정은 홈 오른쪽 위 단추) */
 var NAV = [['home', 'home', '홈'], ['tt', 'book', '시간표'], ['meal', 'meal', '급식'],
-  ['ac', 'cal', '학사일정'], ['work', 'work', '주간업무'], ['link', 'link', '바로가기']];
+  ['ac', 'cal', '학사일정'], ['work', 'work', '주간업무'], ['att', 'att', '출결'], ['link', 'link', '바로가기']];
 /* ── 화면 기록: 뒤로 · 앞으로 · 홈 ──
    브라우저 history 에 화면마다 한 칸씩 쌓는다 → 안드로이드 «뒤로» 버튼·스와이프도 같은 길을 간다.
    HI = 지금 칸 번호, HMAX = 가 본 가장 먼 칸(앞으로 갈 수 있는지 알려고) */
@@ -1558,7 +1603,7 @@ window.addEventListener('popstate', function (e) {
   VIEW = st.v; meQ = ''; draw(); window.scrollTo(0, 0);
 });
 function navHtml() {
-  var cur = VIEW === 'me' ? 'tt' : VIEW;   // 내 이름 고르는 화면은 시간표 안의 일
+  var cur = VIEW === 'me' ? 'tt' : (VIEW === 'sms' ? 'att' : VIEW);   // 문자 문구는 출결 아래의 일 — 출결 탭에 불을 켠다   // 내 이름 고르는 화면은 시간표 안의 일
   return '<nav class="nav">'
     + '<button type="button" class="navb" data-nav="back" aria-label="뒤로 가기"' + (HI > 0 ? '' : ' disabled') + '>' + lineIc('prev') + '<span>뒤로</span></button>'
     + '<button type="button" class="navb" data-nav="fwd" aria-label="앞으로 가기"' + (HI < HMAX ? '' : ' disabled') + '>' + lineIc('next') + '<span>앞으로</span></button>'
@@ -1590,11 +1635,14 @@ function draw() {
     + (VIEW === 'home'
       ? '<button type="button" class="act" data-go="set">설정</button>'
       : '')
-    + '</div><div class="wrap">' + body + '</div>' + navHtml();
+    + '</div><div class="wrap">' + whatsNewHtml() + body + '</div>' + navHtml();
   wire();
 }
 
 function wire() {
+  APP.querySelectorAll('[data-wnx]').forEach(function (b) {
+    b.addEventListener('click', function () { LS.set('seenver', VERSION); draw(); });
+  });
   APP.querySelectorAll('[data-go]').forEach(function (b) {
     b.addEventListener('click', function () { go(b.dataset.go); });
   });
